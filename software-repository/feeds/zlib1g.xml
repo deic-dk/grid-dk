@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/zlib1g.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>zlib1g</name>
+  <summary>compression library - runtime</summary>
+  <description>zlib is a library implementing the deflate compression method found
+in gzip and PKZIP. This package includes the shared library.</description>
+  <!-- no binaries here, library only -->
+  <group arch="Linux-i386">
+    <implementation id="sha1new=b919f1ef2a5efc44a646ff8c3a703db6293f25f1" released="2009-05-27" version="1">
+      <archive href="http://ftp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3.3.dfsg-12_i386.deb" size="73156"/>
+    </implementation>
+    <implementation arch="Linux-x86_64" id="sha1new=31a17742f7f92e71dd6b855f9c00691d3d8a8b95" released="2009-05-27" version="1">
+      <archive href="http://ftp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3.3.dfsg-12_amd64.deb" size="74838"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VXZ3W8lGjpY9URAiYqAJ9MogvFg8Sh4K9JLzm537sPxXHIdACgnNPZHKw+7G5BaSDY
+3Rh5UvvP0k8=
+
+-->

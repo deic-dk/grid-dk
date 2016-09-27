@@ -1,0 +1,184 @@
+Notes on setting up grid.dk tools on a CentOS-5.x installation.
+(MiG system with ARC backend and couchdb-sgas)
+This describes a complete new installation on a CentOS-5.4 system,
+carried out on a virtual machine for test purposes. 
+
+1. ARC-client
+2. MiG
+3. couchdb
+4. sgas-experimental
+
+------------------------------------
+1. install ARC-client
+
+ARC client is installed from the repository, using yum. Besides the
+standard client, we need to install arclib-python bindings.
+
+In order to make the yum installation succeed, repository "epel" 
+(for dependencies perl(XML::DOM) and libvomsapi.so.0. ) and 
+nordugrid have to be configured for yum: 
+Epel:
+#>rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noarch.rpm
+Nordugrid: manually by creating a file like this:
+[root@CentOS-MiG ~]# cat /etc/yum.repos.d/nordugrid.repo 
+[nordugrid]
+name=NorduGrid - $basearch - stable
+baseurl=http://download.nordugrid.org/repos/redhat/el5/i386/stable/
+enabled=1
+gpgcheck=1
+gpgkey=http://download.nordugrid.org/RPM-GPG-KEY-nordugrid
+You need to provide the GPG keys for epel and nordugrid, or accept 
+them when installing.
+
+#>yum groupinstall "ARC Client"
+Then, add the python bindings:
+#>yum install nordugrid-arc-python
+
+2. install MiG
+
+MiG is installed in a custom location, under /opt/mig.  We follow
+the standard procedures, and set up a custom CA in "MiG-certificates".
+
+Quite a few tweaks are necessary to make this installation
+work. generateconfs.py does not yet produce drop-in configuration
+files. Some points:
+. /etc/httpd/conf.d/ssl.conf needs to be completely disabled. Instead,
+  "LoadModule ssl_module modules/mod_ssl.so" and "Listen 443" have been
+  put inside MiG.conf
+. MiG.conf needs PYTHONPATH environment variable to load arclib: 
+  In mod_env part,
+# set pythonpath to enable loading arclib
+	SetEnv PYTHONPATH /opt/nordugrid/lib/python2.4/site-packages
+. /etc/httpd/conf/httpd.conf overwrites user and group clause from
+  MiG.conf (included before). Commented out User/Group clause in
+  httpd.conf
+. the new file and job interface needs a simplejson installation which
+  is not included in the CentOS-2.4 python package.  Install it with:
+  #>yum install python-simplejson
+	(from epel, to configure epel see above) 
+
+REMARK: 
+ As a consequence of this simplejson installation, a user with a
+ "proper" home should run the MiG server and httpd server. There will 
+ be a folder .python-eggs in this home dir to cache loaded modules.
+
+3. install couchdb: built from a source package, after installing the
+required prerequisites.  
+#>yum install ncurses-devel openssl-devel icu libicu-devel js js-devel curl-devel erlang
+ ( most likely, some will be already present, so: 
+#>yum install icu libicu-devel js js-devel  erlang )
+
+Then a couchdb source tarball is needed (currently couchdb-0.10.0, 
+see http://couchdb.apache.org), and couchdb is installed from 
+source in a custom location, using custom erlang headers (64bit):
+#> ./configure --prefix=/opt/couchdb --with-erlang=/usr/lib64/erlang/usr/include
+#> make -j 4
+#> make install
+
+The custom location of couchdb contains all configuration and the
+database files. A link from /opt/couchdb/etc/rc.d/couchdb to 
+/etc/init.d/couchdb is useful, though.
+To enable access to couchdb from outside, relaxed firewall settings
+are required. Port 5984 (or the configured port) needs to be opened.
+(And in file /opt/couch/etc/couchdb/local.ini: bindaddress = 0.0.0.0)
+
+
+4. install sgas-experimental
+
+SGAS (currently RC4) can be downloaded from URLs pointed at by the 
+author, and there is also a git repository: 
+http://github.com/htj/sgas-experimental/tree/master
+http://www.cs.aau.dk/~htj/ndgf/src/sgas-accounting-server-3.0.0-rc4.tar.gz
+
+Prerequisites are described in a short manual in the sgas doc 
+dir, for RedHat.
+This involves installing Python-2.6 (built from source) and some
+packages. Python-2.6 needs to be in a custom location, otherwise it
+will break the CentOS administration tools!
+
+Python-2.6.2 (built from source)
+	(some modules are not available, but which is not harmful)
+zope for python-2.6 (installed using python-2.6 install script)
+TwistedCore (installed using python-2.6 install script)
+TwistedWeb  (installed using python-2.6 install script)
+pyOpenSSL   (installed using python-2.6 install script)
+
+Then, we install sgas-experimental in a custom location. 
+The command used is 
+#>/opt/python-2.6/bin/python2.6 setup.py install --root=/custom-path
+
+This results in directories /etc, /usr and /opt being created as
+children of /custom-path, instead of at the top level.  
+
+Directory /opt only contains subdirectories intended to go into the
+python installation, so (as root) links from the respective lib 
+directory inside the python-2.6 installation are created.
+
+Then, configure sgas-experimental for the custom location (and in general):
+
+a) (/custom-path/etc/sgas.conf)
+The database location is kept standard (localhost:5984). Modified are
+the webfiles and authzfile entries, prefixing them with our
+custom location /custom-path
+Furthermore, we define custom key,cert, and cert-dir in [server]. We
+use the same directory as for the MiG installation.
+-----------sgas.conf-----------------
+...
+[server]
+hostkey=..
+hostcert=..
+certdir=..
+
+# database config
+db=http://localhost:5984/usagerecords
+webfiles=/custom-path/usr/share/sgas/webfiles
+authzfile=/custom-path/etc/sgas.authz
+...
+-------------------------------------
+
+b) (//custom-path/etc/sgas.authz)
+The DN to be used by the MiG server, and the ones of remote 
+inserters should be put in here.
+
+c) (/custom-path/usr/local/share/sgas/sgas.tac)
+There is a hard-wired "DEFAULT" path to sgas.conf when starting the
+server, but it can be overridden in the sgas.tac file. We edit the
+file as follows:
+--------sgas.tac-----------
+from sgas.server import setup
+
+config = '/custom-path/etc/sgas.conf'
+application = setup.createSGASServer( config )
+---------------------------
+
+d) start script (/custom-path/etc/init.d/sgas):
+
+The custom location has to be prepended to the TACFILE and log file
+location. We keep the default for the pid file, though.
+
+We also need to make sure twisted starts with python2.6. The package
+has been installed using python2.6, so the right version of "twistd"
+resides in /opt/python2.6/bin. Another installation might be found
+before on the path, so we explicitly give the path in the start
+script (new variable).
+The file is modified accordingly and a link put into /etc/init.d.
+
+Other modification: CentOS does not use /etc/lsb/ functions, but its
+own /etc/init.d/functions file, with slightly different status
+command. The init.d script is modified accordingly.
+
+
+4'. SGAS usage record registration script:
+
+Finally, the tool to register usage records needs to be customised,
+done by a custom sgas-logger.conf (which shares some field names with
+the global arc.conf in an arc server). This registration script is a
+real prototype, so we do not expect too much from it. It worked fine
+for us, though.
+
+The directory to find the usage records requires a structure
+<data-dir>/urs, <data-dir>/state, <data-dir>/archive, so we cannot use
+the mig usage_records directory directly. We can of course link it to
+"urs", and will get usage records moved away and archived like this.
+For now, in the test system, we manually move the files around.
+

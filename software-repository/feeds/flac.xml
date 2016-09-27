@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/flac.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>flac</name>
+  <summary>Free Lossless Audio Codec - command line tools</summary>
+  <description>FLAC stands for Free Lossless Audio Codec. Grossly oversimplified, FLAC is
+similar to MP3, but lossless. The FLAC project consists of:
+
+ * The stream format
+ * libFLAC, which implements a reference encoder, stream decoder, and file
+   decoder
+ * flac, which is a command-line wrapper around libFLAC to encode and decode
+   .flac files
+ * Input plugins for various music players (Winamp, XMMS, and more in the
+   works)
+
+This package contains the command-line tools flac (used for encoding and
+decoding FLACs) and metaflac (used for manipulating FLAC metadata.)</description>
+  <binaries xmlns="http://portal.grid.dk/0install/namespace">
+    <binary name="flac"/>
+    <binary name="metaflac"/>
+  </binaries>
+  <group arch="Linux-x86_64" main="usr/bin/flac">
+    <requires interface="http://portal.grid.dk/0install/libflac8.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <requires interface="http://portal.grid.dk/0install/libogg0.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <implementation id="sha1new=a8ee2441596cfbfda70514fe6cce76fa5a3d227e" released="2009-11-09" version="1.2.1-1.2">
+      <archive href="http://ftp.debian.org/debian/pool/main/f/flac/flac_1.2.1-1.2_amd64.deb" size="176922"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=2a89aed5843bf8bddbd64aff9703e34061c4c2ad" released="2009-11-09" version="1.2.1-1.2">
+      <archive href="http://ftp.debian.org/debian/pool/main/f/flac/flac_1.2.1-1.2_i386.deb" size="172054"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VBZ3W8lGjpY9URAlXSAJ9e2f6nvbxK6Uc4YpXt1vpDLf6GNQCggmI6lr0ny7l+vrDL
+T2hyEqLTNwI=
+
+-->

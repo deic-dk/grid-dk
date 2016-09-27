@@ -1,0 +1,202 @@
+\newcommand{\griddk}{{\it \sc Grid.dk}}
+
+\section*{\griddk{}  Wish List for Reporting Grid Usage}
+
+
+\subsection*{Functionality}
+
+In general, \griddk{} wants to use SGAS or alike for presenting
+summary usage statistics embedded in web pages, in a graphical
+manner. Interesting data denoted as \emph{usage statistics} are job
+count, accumulated wallclock time or CPU time, and number of users.
+
+The essential concept of views which we would like to use are data
+groupable in categories of three dimensions. 
+
+{\scriptsize
+\setlength{\unitlength}{1mm}
+\begin{picture}(50,50)
+\thicklines
+\put(15,15){\vector(1,0){25}}
+\put(10,12){Time (hour, day, week, \ldots)}
+\put(15,15){\vector(0,1){35}}
+\put(2,30){\parbox{12mm}{\raggedleft Entity (user, Project, VO, \ldots)}}
+\put(16,16){\vector(2,1){12}}
+\put(28,24){\parbox{15mm}{Site (Host, Cluster)}}
+\end{picture}
+}
+
+Categories in the three dimensions (axes) imply an obvious ordering
+\begin{itemize}
+  \item ($hour \le day \le week \le \ldots \le Forever$)
+  \item ($user \in project \in VO \in all Grid $)
+  \item ($host \in cluster \in all Sites$)
+\end{itemize}
+
+That said, a system may reduce its historic data by pre-grouping it,
+possible in all three dimensions. For instance, an ``hourly'' view may
+be restricted to data which is not older than a threshold
+time. Accordingly, data about one single node (host) may be made
+available only for this threshold time.  All data older than the
+threshold can then be accumulated per-day and cluster, and incremented
+on a daily or weekly basis.
+
+Some categories can be directly mapped to (potential) elements in the
+usage record: cluster (MachineName), node in cluster (Host), user
+(GlobalUserName).
+
+A question which might come up is how to handle failed and canceled
+jobs (which are assumed to produce usage records just like completed
+jobs).  
+\begin{itemize}
+  \item Canceled jobs should be included in job count statistics, but
+    are not expected to generate charge or walltime/cputime
+    values.
+
+  \item Failed jobs may (but don't necessarily do) generate charge as
+    well as wallclock and CPU time. \footnote{An example of a failed
+      job - provided by Henrik - shows a wallclock time and CPU time
+      of zero, while start time and end time are completely
+      unrealistic (that is, differ by more than 24 hours).} These
+    values should be taken into account when computing summaries.
+\end{itemize}
+
+
+Most views will use only two of the three dimensions, one of them will
+be time for all of them (so far). The specific views are detailed
+below in terms of their target audience.
+
+\subsubsection*{Views for Users}
+
+Users will be interested in seeing statistics for their own usage, and
+for Projects, VOs, and overall (dimensions \emph{Entity} and
+\emph{Time}). \emph{Usage} here means a count of all jobs as well as
+the sum of charges and time.
+\begin{itemize}
+  \item usage of one particular user, grouped in time (weeks and days)
+  \item usage grouped by project or VO, and in time
+  \item usage as a percentage (pie chart) for all projects
+\end{itemize}
+
+\subsubsection*{Views for Administrators and Resource Providers}
+
+Administrators should be able to view statistics of the cluster they
+are administering (dimensions \emph{Site} and \emph{Time}).
+
+Per-entity statistics for their own cluster, for a given period of
+time (all dimensions) or overall, might also be useful.
+
+\subsubsection*{Views for Externals}
+
+Externals are everybody who is accessing \griddk{}  web pages without
+authentication, for instance, a project page which summarises the
+project goals and achievements. It should be possible to present some
+summary data of cluster usage on such web pages.
+
+\begin{itemize}
+  \item overall usage per cluster, grouped in weeks and days
+  \item overall count of users 
+  \item usage grouped by project (and their percentage?)
+\end{itemize}
+
+\subsection*{Privacy and Authorisation}
+
+It is yet unclear which level of detail/restrictions for the
+statistics is desirable and acceptable for all parties involved.
+\griddk{} would like to keep as much data public as possible. However,
+cluster administrators might wish to restrict viewing per-site usage
+to a weekly or daily summary for non-authorised users, and users might
+wish to keep per-user usage completely private.
+
+There are no technical problems in implementing any of the mentioned
+restrictions. Authorisation of the respective views (grouped as
+above) should be realised via the requesting DN in the case of
+administrator views, and by checking membership of the user DN to the
+respective VO for user views (in our case, the only VO for now is
+``dcsc.dk'').
+
+\subsection*{Non-functional requirements}
+
+Having each of these views in an own web page is a suboptimal solution
+for \griddk{}. It should be possible to embed usage statistics (most
+likely represented graphically) as \emph{parts} of bigger web pages in
+our portal. An interface which yields the bare strings and numbers
+where graphics are generated locally would be a way to achieve this.
+
+\section*{Remarks specific to CouchDB/Map-Reduce queries}
+
+As outlined above, the targeted views for \griddk{} web pages involve
+grouping the accumulated job count and measures such as wallclock time
+or (better) charge in categories of at least two dimensions.
+Map-reduce computations to obtain this data from a collection of
+single usage records means to emit \emph{pairs} or \emph{triples} (the
+desired categories) as intermediate keys from the map stage. Likewise,
+the emitted values might be tuples of values which are reduced
+component-wise (for instance, obtaining both job count and charge
+sum).
+
+In order to select only information for particular entities or sites,
+a filtering stage will be part of the map function; for instance,
+emitting results only for a given user DN or project, or only for one
+cluster.  The result is a structure where the mapper typically filters
+input and then emits selected values with the desired key tuple. The
+reducer merely sums up the values (or counts them, which is, sums up
+ones emitted by the mapper). Figure~\ref{functions} shows some
+functional code for this generic perspective.
+
+\begin{figure}
+\begin{code}
+-- functional specification: mapper and reducer for usageRecord
+-- statistics view. Haskell code, "[..]" denotes lists, "(..)"
+-- tuples, and arguments for functions are written without brackets
+-- (like this: "concatenate list1 list2" instead of
+-- "concatenate(list1,list2)")
+
+-- predicate :: UsageRecord -> Bool
+-- keyProjection   :: UsageRecord -> (Entity, Site, Time)
+-- valueProjection :: UsageRecord -> (Count, Timing, Charge)
+generic_map :: (UsageRecord -> Bool) -> 
+               (UsageRecord -> (Entity, Site, Time)) ->
+               (UsageRecord -> (Count, Timing, Charge)) -> 
+               [((Entity,Site,Time), (Count,Timing,Charge))]
+generic_map predicate projection doc
+    = if predicate doc -- do we want this one?
+        then [(keyProjection doc, valueProjection doc )] -- emit...
+        else [] -- or else, forget it (emit nothing)
+
+-- this one is always the same... caller should discard unwanted parts
+generic_reduce :: (Entity, Site, Time) -> 
+                  [(Count, Timing, Charge)] -> (Count, Timing, Charge)
+generic_reduce keys valueList = sum_per_component valueList
+    where sum_per_component listOfTuples = ... -- straightforward
+
+-----------------------------------------------------------
+-- Example: count and wallclock time for completed jobs for
+-- a given project name, counted and summed up per week
+predicate :: UsageRecord -> Bool
+predicate doc = doc.status == "completed" 
+                && doc.project == "ourProject"
+
+keyProjection :: UsageRecord -> (Entity, Site, Time)
+keyProjection doc = (doc.project, AllSites, week(doc.start_time))
+
+valueProjection :: UsageRecord -> (Count, Timing, Charge)
+valueProjection doc = (1, doc.wall_time, 0)
+\end{code}
+\caption{Map and Reduce Functions for Usage Record Views}
+\label{functions}
+\end{figure}
+
+Some intended views might require functionality which is not covered
+by the CouchDB model. For instance, sorting all results by value, or
+norming the data against a total (such as giving a percentage). The
+reduce stage can only do this on a per-key basis, so it requires
+post-processing the whole data set (i.e. have a global view of all
+results).\\
+%
+Post-processing the reducer's results per key (as implemented in
+sgas-experimental) does not help here. The global information could be
+obtained by emitting pairs to every reducer from all mappers, but it
+will make the reduction considerably more complicated (and is not in
+the spirit of map-reduce at all).
+

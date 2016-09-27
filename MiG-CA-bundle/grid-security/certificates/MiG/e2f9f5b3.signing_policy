@@ -1,0 +1,4 @@
+# Signing policy for Minimum intrusion Grid CA
+access_id_CA  X509   '/C=DK/ST=Denmark/O=Minimum intrusion Grid/OU=MiG Root CA/CN=Minimum intrusion Grid'
+pos_rights    globus CA:sign
+cond_subjects globus '"/C=DK/*"'

@@ -1,0 +1,68 @@
+
+
+Some installation notes for MiG installations on grid.dk 
+--------------------------------------------------------
+steps to install/update an installation: 
+
+1. 
+a) unpack distribution (directories mig/state) and cd there
+b) check state for changes (compare to old one), 
+   replace mig directory
+c) move config and database to mig/server
+#> cp oldmig/server/MiGserver.conf mig/server
+#> cp oldmig/server/MiG-users.db mig/server
+ create new pipes 
+#>cd mig/server
+#>mkfifo server.stdin
+#>mkfifo notify.stdin
+
+d) set ownership to apache (executing daemons and httpd):
+    sudo chown -R apache:apache mig state
+
+  	which requires mig.log to be configured using a full path, and
+	we only get one single log file. See short 2nd note below.
+  ... and which makes apache need an ssl key: .ssh inside the 
+   /var/www directory (home of apache). 
+
+2. re-generate, compare and double-check configuration files	
+   generate these files using mig/install/generateconfs.py
+   (generateconfs.py -h gives usage information)
+  
+Generated from the templates in mig/install/grid.dk-config/ are 
+MiG.conf and MiGserver.conf - to be used and double-checked
+and a service script MiG to include in /etc/init.d
+(and register using /sbin/chkconfig in CentOS systems)
+
+a) MiGserver.conf , goes into mig/server 
+   ( or into location indicated by variable MIG_CONF)
+   Sometimes, new mandatory fields are added, or names changed.
+   Compare the newly generated one to the old one.
+
+b) MiG.conf, goes into /etc/httpd/conf.d
+   This has to match other web server functionality on the machine,
+   and consists of setting up one normal hosts (port 80, can be 
+   separated by name-based virtual hosts) and two ssl host (port 
+   443 and 444). Ports can be configured with generateconfs.py
+
+   In our grid.dk installation, we left out some parts of the
+   generated file, as we want to minimise changes to httpd.conf to
+   zero if possible.
+   We want to avoid this and minimise the changes affecting other web
+   pages, but it might be necessary to also change httpd.conf.
+   Most likely, problems arise from another default ssl.conf.
+
+c) put the service script in place (/etc/init.d). 
+   The file has been generated with the paths given to 
+   generateconfs.py, but may be edited easily (variables)
+
+3. Test startup of MiG server and monitor:
+   You can check the configuration by running mig/server/checkconf.py.
+   Then, fix misconfigurations inside MiGserver.conf (and potential
+   permission errors), and start the server by the service script.
+
+4. test startup of httpd.  httpd should start with MiG.conf inside
+   /etc/httpd/conf.d/MiG.conf.  Otherwise, fix the configuration
+   files. Look into ssl.conf, MiG.conf, httpd.conf, in that order (MiG
+   might actually replace ssl.conf completely, because it comes first in
+   the configuration order - M before s).
+

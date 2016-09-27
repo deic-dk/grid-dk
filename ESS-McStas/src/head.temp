@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!-- 
+# (C) 2010 Jost Berthold (berthold at diku.dk), grid.dk
+#          E-science Center, Copenhagen University
+# This file is part of ESS-McStas solutions.
+# 
+# ESS-McStas solutions is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# ESS-McStas solutions is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="/images/site.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/cert_redirect/.default.css" media="screen"/>
+
+
+<title>
+McStas Software Services
+</title>
+<script type="text/javascript" src="/images/js/jquery-1.3.2.min.js">
+</script>
+
+<link rel="stylesheet" type="text/css" href="/images/css/jquery.managers.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/images/css/jquery.contextmenu.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/images/css/jquery-ui-1.7.2.custom.css" media="screen"/>
+
+<script type="text/javascript" src="/images/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/images/js/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" src="/images/js/jquery.form.js"></script>
+<script type="text/javascript" src="/images/js/jquery.prettyprint.js"></script>
+<script type="text/javascript" src="/images/js/jquery.filemanager.js"></script>
+<script type="text/javascript" src="/images/js/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="/images/js/jquery.tablesorter.pager.js"></script>
+<script type="text/javascript" src="/images/js/jquery.contextmenu.js"></script>
+
+<script type="text/javascript">
+
+// global variables used by many scripts, corrected below if possible
+var mcstas_vgrid = "__MCSTAS__";
+
+$( function() {
+    // find out where we are: grep vgrid name (vgrid_name=...) from url
+    var match = (location.search).match(new 
+                              RegExp(".*vgrid_name=([^&]*)(&.*)?")) 
+	        || ["","",""];
+    if (match[1] == "" ) {
+       alert("Could not determine VGrid");
+    } else {
+	// cater for space in names (but currently does not work with MiG) 
+       mcstas_vgrid = match[1].replace("%20"," ");
+    }
+
+    // modify script node in header, for loading jquery migtools
+    $( "#jsmig" ).attr("src","/vgrid/" + mcstas_vgrid + "/path/jquery.migtools.js");
+
+
+    // possibly another script node loading mcstas-specific scripts
+
+    //  correct some instances where the VGrid appears
+    $( "#logoimage" ).attr("alt", mcstas_vgrid);
+    $( ".navmenu  a" ).each( function() {
+	     this.href = this.href.replace("__MCSTAS__",mcstas_vgrid);
+    });
+
+ });
+</script>
+
+<!-- "src" will be filled when name of the VGrid is known -->
+<script id="jsmig" type="text/javascript" ></script>
+
+</head>
+<body >
+<div id="topspace">
+</div>
+<div id="toplogo">
+<!-- REPLACE: __MCSTAS__ => name of the VGrid -->
+<img src="" id="logoimage" alt="__MCSTAS__"/>
+<span id="logotitle">
+McStas Pages
+</span>
+</div>
+<div class="menublock">
+<div class="navmenu">
+ <ul>
+<!-- REPLACE: __MCSTAS__ => name of the VGrid -->
+   <li  class="resources"><a href="/vgrid/__MCSTAS__/"  title="to top">Back to the Top</a></li>
+   <li  class="submitjob"><a href="/vgrid/__MCSTAS__/path/compile.html"  title="Define a compilation job">Compile an Instrument</a></li>
+   <li  class="jobs"><a href="/vgrid/__MCSTAS__/path/visualize.html"  title="Generate graphics from a simulation">Visualize a Simulation</a></li>
+   <li  class="runtimeenvs"><a href="/vgrid/__MCSTAS__/path/compiled/showhtml"  title="Browse compiled instruments">Compiled Instruments</a></li>
+   <li  class="files"><a href="/vgrid/__MCSTAS__/path/simulated/"  title="Browse simulation runs">Simulation Output Dir</a></li>
+   <li  class="settings"><a href="fileman.py?path=private_base/__MCSTAS__/"  title="Direct access to files (File Manager)">View Files directly</a></li>
+   <li class=""><!-- spacer -->&nbsp;</li>
+   <li  class="dashboard"><a href="dashboard.py"  title="Back to Grid middleware">Back to the Dashboard</a></li>
+
+ </ul>
+</div>
+</div>
+
+<div class="contentblock">
+<div id="migheader">
+
+</div>
+<div id="content">
+<!-- START OF CONTENT -->

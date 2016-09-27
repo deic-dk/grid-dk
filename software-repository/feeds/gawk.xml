@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/gawk.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>gawk</name>
+  <summary>GNU awk, a pattern scanning and processing language</summary>
+  <description>`awk', a program that you can use to select particular records in a
+file and perform operations upon them.
+
+Gawk is the GNU Project's implementation of the AWK programming language.
+It conforms to the definition of the language in the POSIX 1003.2 Command
+Language And Utilities Standard. This version in turn is based on the
+description in The AWK Programming Language, by Aho, Kernighan, and
+Weinberger, with the additional features defined in the System V Release
+4 version of UNIX awk. Gawk also provides more recent Bell Labs awk
+extensions, and some GNU-specific extensions.</description>
+  <package-implementation main="/usr/bin/gawk" package="gawk"/>
+  <!-- no binaries tag needed, package name is executable name -->
+  <group arch="Linux-x86_64" main="usr/bin/gawk">
+    <implementation id="sha1new=43ad819565877ed3b9c150e2a7cb6c7561fb8fb5" released="2009-09-29" version="1">
+      <archive href="http://ftp.debian.org/debian/pool/main/g/gawk/gawk_3.1.5.dfsg-4.1_amd64.deb" size="721244"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=bc1c7556406c766f4a1cf07436708c43c379685f" released="2009-09-29" version="1">
+      <archive href="http://ftp.debian.org/debian/pool/main/g/gawk/gawk_3.1.5.dfsg-4.1_i386.deb" size="684984"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VDZ3W8lGjpY9URAilmAJsH290FNJ6egLff3+QVtGIWM9d0HgCeN67XcocNc+NKmXRf
+vBwNd9KKr6c=
+
+-->

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='%(document_root)s/interface.xsl'?>
+<interface uri="/package" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>SWRepo</name>
+  <summary>Software Repository for %(site_name)s</summary>
+  <description>Welcome to the %(site_name)s software repository management system:
+Here you can browse available packages and edit any packages that you administrate.
+</description>
+%(usage)s
+%(page_data)s
+</interface>

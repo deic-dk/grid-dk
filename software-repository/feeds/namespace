@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" >
+<head>
+<title>Grid.dk XML Namespace for Zeroinstall feeds</title>
+<style type="text/css">
+body { font-family: "Times New Roman", Times, serif;
+       background-color: white; color: black;
+       margin: 1em 1em 1em 1em; }
+p, .version { 
+    margin-left: 2.5em; }
+
+dl, blockquote { 
+     margin-left: 3.2em; }
+
+ul, ol { 
+     margin-left: 4.5em; }
+
+pre { font-family: "Courier New", monospace; 
+      padding: 1em; 
+      margin: 0.2em 2.5em 0.2em 3em;
+      background-color: #efeff5;
+      border: 1px solid #cfcfcf;
+      white-space: pre;
+ }
+
+h1, h2, h3, h4 {font-family: Arial, Helvetica, sans-serif;}
+h1 { font-size: 2.2em; }
+
+h2, { font-size: 1.6em; }
+
+h2, h3, h4, em { font-weight: bold;
+             margin-left: 0.3em; }
+
+h3 {
+  margin-left: 0.5em;
+}
+
+h4 {
+  margin-left: 1em;
+}
+
+
+pre {
+  white-space: pre;
+}
+</style>
+</head>
+<body>
+<h1>Grid.dk XML Namespace for Zeroinstall feeds</h1>
+<h2><a name="authors">Author</a></h2>
+<ul>
+<li><a href="http://www.grid.dk">grid.dk</a></li>
+<li>(c) 2010</li>
+</ul>
+
+<h2>Version</h2>
+<p><strong>Latest Version:</strong> <a href="http://portal.grid.dk/0install/namespace">http://portal.grid.dk/0install/namespace</a></p>
+
+<ul>
+<li>2010-05-24 First version</li>
+</ul>
+
+<h2>Description</h2>
+
+<p>We add information about executables included in a zeroinstall XML feed</p>
+
+
+<h2>Syntax</h2>
+<h3>griddk:binaries</h3>
+
+<p>A child-element of the interface element in a Zeroinstall feed. No attributes.</p>
+<h3>griddk:binary</h3>
+
+<p>A child-element of the binaries element in a Zeroinstall feed. Attributes: "name", containing the executable name.</p>
+
+<h4>Example</h4>
+
+<pre>
+&lt;interface uri="http://example.com/0install/feed.xml"&gt;
+  ..
+  &lt;binaries xmlns="http://portal.grid.dk/0install/namespace"&gt; 
+  &lt;binary name="executable-name"/&gt;
+  &lt;/binaries&gt; 
+  ..
+&lt;/interface&gt;
+</pre>
+
+</body>
+</html>

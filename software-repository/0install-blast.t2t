@@ -1,0 +1,122 @@
+Grid.dk - BLAST with Zero Install Example
+Using 0install packages for running BLAST
+Last updated %%date(%d-%m-%Y %H:%M)
+% End of the three default header lines
+%! Encoding: utf8
+%! Options : --toc --enum-title
+% End of the optional settings lines
+
+%
+% This is a txt2tags formatted document.
+% Generate HTML version by running:
+% txt2tags --toc -t html -o NAME.html NAME.t2t
+%
+% Generate LaTeX version by running:
+% txt2tags --toc -t tex -o NAME.tex NAME.t2t
+%
+% The Makefile wraps up generation including the two examples above
+% nicely. So just run: 
+% make NAME.{html,ps,pdf}
+
+
+%%toc
+
+= BLAST Intro =
+From the BLAST homepage (http://blast.ncbi.nlm.nih.gov/):
+"The Basic Local Alignment Search Tool (BLAST) finds regions of local
+similarity between sequences. The program compares nucleotide or protein
+sequences to sequence databases and calculates the statistical
+significance of matches. BLAST can be used to infer functional and
+evolutionary relationships between sequences as well as help identify
+members of gene families."
+
+
+= A Simple BLAST Example =
+This is a simple BLAST example to verify the blast2 zero-install
+package.
+
+The example uses our zero-install blast2 package to run an example taken
+from the NCBI documentation at:
+http://www.ncbi.nlm.nih.gov/Class/BLAST/blast_course.short.html
+
+
+== General Preparation ==
+Simply download the protein description to your test directory with:
+```
+wget http://www.ncbi.nlm.nih.gov/Class/BLAST/purf.txt
+```
+
+Then download and unpack the (quite big) database files:
+```
+wget ftp://ftp.ncbi.nih.gov/blast/db/swissprot.tar.gz \
+     ftp://ftp.ncbi.nih.gov/blast/db/nr.00.tar.gz \
+     ftp://ftp.ncbi.nih.gov/blast/db/nr.01.tar.gz \
+     ftp://ftp.ncbi.nih.gov/blast/db/nr.02.tar.gz \
+     ftp://ftp.ncbi.nih.gov/blast/db/nr.03.tar.gz
+tar xf swissprot.tar.gz
+tar xf nr.00.tar.gz
+tar xf nr.01.tar.gz
+tar xf nr.02.tar.gz
+tar xf nr.03.tar.gz
+```
+
+Now the BLAST data are in place.
+
+
+== Zero Install Preparation ==
+Now we can prepare to actually run e.g. blastall from the zero-install
+feed:
+```
+0alias blastall http://bardinosen.dk/0install/blast2.xml blastall
+rehash
+```
+
+== Running the Example ==
+The proposed blastall command from the example is:
+```
+blastall -p blastp -i purf.txt -d swissprot -o out.txt
+```
+
+When it completes we can check the results in the out.txt file.
+
+
+== Running the Example on Grid ==
+The following job description will execute the same example on any
+suitable resources on the grid:
+
+```
+::EXECUTE::
+$BLASTALL -p blastp -i purf.txt -d swissprot -o out.txt
+
+::INPUTFILES::
+http://www.ncbi.nlm.nih.gov/Class/BLAST/purf.txt purf.txt
+
+::OUTPUFILES::
+out.txt
+
+::RUNTIMEENVIRONMENT::
+BLAST2-1.0
+SWISSPROT-DB
+
+::MEMORY::
+1024
+
+::DISK::
+1
+
+::CPUTIME::
+3600
+
+```
+
+We use the BLAST2 runtime environments to direct the job to suitable
+resources with both the BLAST software and swissprot database
+installed. Then we can use the automatic BLASTALL environment variable
+to transparently fill in the actual blastall command on whatever
+resource the job is executed on.
+We load the purf input file directly from the web site, but could also
+have decided to upload it to our grid home and use it from there
+instead.
+
+You can submit the job description from the textarea or file interface
+directly or manually enter each section in the fields interface.

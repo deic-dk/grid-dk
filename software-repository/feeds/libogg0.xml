@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/libogg0.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>libogg0</name>
+  <summary>Ogg Bitstream Library</summary>
+  <description>Libogg is a library for manipulating ogg bitstreams. It handles
+both making ogg bitstreams and getting packets from ogg bitstreams.</description>
+  <!-- no binaries here, library only -->
+  <group arch="Linux-x86_64">
+    <implementation id="sha1new=848af5e59de01bc7e6613bc03e37201be7b1cb08" released="2009-11-09" version="1.1.3-4">
+      <archive href="http://ftp.debian.org/debian/pool/main/libo/libogg/libogg0_1.1.3-4_amd64.deb" size="14984"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=a182ad9a7ce86e3f4355f1a0b17331f5bec4d9ff" released="2009-11-09" version="1.1.3-4">
+      <archive href="http://ftp.debian.org/debian/pool/main/libo/libogg/libogg0_1.1.3-4_i386.deb" size="14302"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VLZ3W8lGjpY9URAkUoAJkB3dQlm9b35wfiuAXgwMRYkxkdCgCfUv0Rj5V9lh6t8HTV
+weGkptBkRy8=
+
+-->

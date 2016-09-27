@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DB=${1:-usagerecords}
+SRV=${2:-http://localhost:5984}
+
+echo All databases on $SRV:
+curl $SRV/_all_dbs
+
+echo "Database $DB will be (re-)created, proceed (or ^C)?"
+read
+
+echo Deleting $DB
+curl -X DELETE $SRV/$DB
+
+echo Creating $DB
+curl -X PUT  $SRV/$DB
+
+# upload the view definitions
+for VIEW in day week month; do
+   echo "Uploading $VIEW view";
+   curl --upload-file $VIEW.view $SRV/$DB/_design/${VIEW};
+done
+
+echo "Info from server:"
+curl $SRV/$DB
+

@@ -1,0 +1,8 @@
+alias = Minimum intrusion Grid
+ca_url = http://www.migrid.org/public/MiG-CA.crt
+url = http://www.migrid.org/
+email = ca@www.migrid.org
+crl_url = http://www.migrid.org/public/MiG-CA.crl
+status = accredited:classic
+version = 1.30
+sha1fp.0 = EA:72:2F:50:98:F6:2D:4A:15:D1:BF:2C:50:72:D1:76:E8:E2:EE:D8

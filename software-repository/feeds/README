@@ -1,0 +1,71 @@
+Re-packaging zeroinstall software feeds for grid.dk:
+----------------------------------------------------
+
+Why? 
+
+When executing software feeds by zero-launch, the user has to confirm
+that she trusts the issuer of the software package, who has signed the
+xml file using a gpg key.
+
+For non-interactive grid jobs, this means that software must either be
+issued from automatically trusted sources (i.e. by the zeroinstall
+author himself - builtin trusted key) or we need to pre-deploy a key
+used to sign software feeds from a source under our control.
+
+How?
+
+a) Key: For grid.dk, we use the gpg key of user root (see
+   directory /root for the required information)
+
+b) This key is pre-deployed to resources (under our control or
+   following our instructions) as trusted to deploy feeds from the
+   particular host http://portal.grid.dk) when installing the zeroinstall
+   runtime environment.
+
+   In most cases, this can easily be done by manually executing
+   0launch with a package from our server, as the user who will later
+   be executing the grid jobs.
+
+c) Software feeds (XML) need to be hosted on portal.grid.dk. We choose
+   to use the non-ssl host at port 80 for it, and keep the namespace used
+   by Jonas Barding for the prototype: 
+
+	http://portal.grid.dk/0install/ 
+
+This URL will be aliased to an appropriate directory on the server,
+for both ssl and non-ssl access.
+
+d) The hosted software feeds contain this URL, and need to be signed using the 
+   aforementioned gpg key. 
+   Furthermore, we need to add the names of executables in the software 
+   package, so the generated RE can define corresponding variables.
+   As an example, package flac providing flag and metaflag looks like this:
+  <binaries xmlns="http://portal.grid.dk/0install/namespace">
+    <binary name="flac"/>
+    <binary name="metaflac"/>
+  </binaries>
+
+*>emacs mypack.xml
+
+ ..edit URLs in package, add binaries tags where appropriate..
+
+   After editing the XML manually, then use the command "0publish" to sign.
+   Ignore validation errors if the package had been signed before (you
+   edited manually, so no wonder).
+
+*>0publish --xmlsign mypack.xml
+
+   This has to be done cascading to all dependencies specified ( as
+   tag <required interface=URL> ) in the primarily offered xml feeds.
+
+e) A bit more work is needed when we at grid.dk package software
+   ourselves, instead of just using a debian package or rpm.
+   As an example, Molegro has been packaged for 32 and 64 bit, in two
+   versions. The XML feed contains these packages as "implementation"s and 
+   has to provide a matching sha1 key. When changing the package, recompute
+   the hash (using 0publish)
+   For an unchanged package (i.e. when only relocating), the hash does
+   not need to be recomputed. 
+
+More information can be found at http://0instal.net/package-scons.html, 
+which describes the 0publish command line tool in detail.

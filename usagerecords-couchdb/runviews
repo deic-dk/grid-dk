@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DB=${1:-usagerecords}
+SRV=${2:-http://localhost:5984}
+
+for VIEW in day week month; do
+   echo "Running $VIEW view"
+   time curl $SRV/$DB/_design/${VIEW}/_view/summary-${VIEW}
+done
+

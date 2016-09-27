@@ -1,0 +1,11 @@
+--- gettext-tools/src/write-catalog.c	2010-03-30 12:19:10.849046449 +0200
++++ gettext-tools/src/write-catalog.c.fixed	2010-03-30 12:20:14.839050234 +0200
+@@ -220,7 +220,7 @@
+       /* Open the output file.  */
+       if (!to_stdout)
+ 	{
+-	  fd = open (filename, O_WRONLY | O_CREAT);
++	  fd = open (filename, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+ 	  if (fd < 0)
+ 	    {
+ 	      const char *errno_description = strerror (errno);

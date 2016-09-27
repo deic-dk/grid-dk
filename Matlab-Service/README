@@ -1,0 +1,44 @@
+This folder contains software for a "Matlab compilation service", realised 
+using a VGrid (Virtual Organisation) inside MiG (grid.dk branch).
+Matlab scripts can be compiled to standalone applications and executed. It is
+based on MiG middleware features and javascript, and requires a working 
+Matlab installation on resources (tested with R2010a).
+
+(c) 2010-2011 grid.dk. 
+	Author:  Jost Berthold (berthold at diku.dk)
+    License: GPL-2 (derived from MiG, see file COPYING)
+
+Contents/Installation:
+- One VGrid page index.html for a MiG VGrid, using Javascript for job 
+  definition and other tasks.
+- One library of javascript helpers jquery.migtools.js to support the above.
+These two files should be copied to the private web space of a VGrid.
+
+Background:
+
+A modern Matlab includes a "Matlab compiler" package that can generate
+standalone applications. We can use this in a Grid environment to enable
+execution of Matlab scripts without requiring licenses for executing
+nodes. The executing node needs to install a suitable runtime environment
+(MCRRuntime.bin in a Matlab installation, architecture dependent), and only
+one node (per architecture variant!) needs a complete Matlab installation --
+with Matlab Compiler.
+
+Some documentation is on the index.html page itself. 
+Some additional information here:
+
+As a required setup, define MiG runtime environments MATLAB-COMPILE (variable
+MCC pointing to the Matlab compiler) and MATLAB-RUNTIME (variable MCR pointing
+to the MCRRuntime installation, including the version subdirectory) and
+provide them by suitable resources with architecture X86 and AMD64
+(the RE names can be configured differently inside index.html).
+
+Compiled scripts are stored in a subdirectory "compiled/", accompanied by
+information files "*.info" in json format which are read by the page when
+generating the list of executables. Take care when manually changing this
+directory and its files!
+
+Only VGrid owners are able to compile scripts (members will get a permission
+denied error when the compilation job writes back the result). Members can
+however execute compiled scripts, since their result files are written to
+their MiG home.

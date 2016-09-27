@@ -1,0 +1,313 @@
+Grid.dk - Software Repository Project
+Common resource software repository
+Last updated %%date(%d-%m-%Y %H:%M)
+% End of the three default header lines
+%! Encoding: utf8
+%! Options : --toc --enum-title
+% End of the optional settings lines
+
+%
+% This is a txt2tags formatted document.
+% Generate HTML version by running:
+% txt2tags --toc -t html -o NAME.html NAME.t2t
+%
+% Generate LaTeX version by running:
+% txt2tags --toc -t tex -o NAME.tex NAME.t2t
+%
+% The Makefile wraps up generation including the two examples above
+% nicely. So just run: 
+% make NAME.{html,ps,pdf}
+
+
+%%toc
+
+= Introduction =
+In the grid.dk project we want to maximize Grid resource throughput and utilization. A
+common reason for suboptimal resource utilization is that common
+software isn't available on all available resources. So even when
+some resources are idle and plenty of jobs are ready to run, the jobs
+may not be able to run on any of the idle resources due to missing
+software requirements. Throughput additionally lead us to a goal of
+getting as many resources as possible signed up for the Grid, and that can only be achieved if we add incentitives for
+resource owners to do so. In most cases it all comes down to economy, so our targets are direct income from
+job payment and indirect income through cost savings when minimizing the cost of
+maintaining resources. The direct income topic is outside the scope of
+this subproject, but we will address some issues related to increasing the ease of use and maintanence of Grid
+resources as well as optimizing resource utilization. 
+
+There is no need for every single resource owner to spend time and energy on finding out how to
+install and maintain the most common pieces of software used in Grid
+jobs. If no local users request the software the resource owner will
+have very little incentitive to spend time on maintaining the additional
+software installation. Therefore in practice the only feasible way for us to get the common
+software installed on most or all resources is to make it trivial for
+owners to install and maintain.
+Thus we would like to provide a generic infrastructure which allows resource admins to
+provide users with access to the most common software packages with minimal configuration
+and maintenance.
+
+
+= Requirements =
+The core of the software repository project is the actual software
+packages physically stored somewhere on the internet. There are not really any
+direct restrictions on the design for the core components, but the actual access to the
+packages introduces some requirements. In short the repository will only
+be used  in two ways, namely:
+ - resources installing/updating the software
+ - software managers maintaining the software packages
+
+
+We will have to develop the actual repository design and implementation
+to fit the requirements for those two methods of interaction.
+In general requirements fall into the following categories:
+
+ - ease of use
+ - security
+ - software integrity
+ - install location and privileges
+ - distribution format
+ - versioning
+ - software dependencies
+ - flexibility
+ - license issues
+
+
+== Ease of Use ==
+Resource owners must be able to use our repository for installing the
+packages without intimate knowledge about the particular software. 
+as a minimum the packages should install the actual software but
+we could potentially provide additional features like verification of
+the installed software.
+Resource admins will need a way to
+ - query the available software packages
+ - install a software package
+ - remove a software package
+ - optionally upgrade an installed software package
+
+
+The total amount of work compared to manually installing the same
+software needs to be significantly smaller.
+
+
+Similarly the software managers should be able to 
+ - add new packages
+ - release new versions of a package
+ - optionally remove versions of a package
+ 
+
+
+== Security ==
+Resource admins first of all need to trust the software
+managers. Otherwise they will flat out reject installing anything. Thus
+we need a trust model where resource admins can choose to accept only 
+packages or package sets maintained by someone they trust.
+We will probably have to host and maintain the core set of packages
+unless we can find another trusted organization to take that responsibility.
+There may be some gain from allowing individuals to add their own packages,
+however, so we should keep that option open. As long as resource owners
+can easily filter out any untrusted packages, it is fine.
+
+Interaction with the software repository additionally needs to take
+place in a secure fashion so that resource owners can be sure that the
+software they install does in fact originate from the trusted source.
+
+Similarly when software managers interact with the repository there must
+be mutual authentication and the repository must include access control
+in order to prevent anyone but the responsible manager from modifying
+a software package. 
+
+Optionally the software packages can be signed by the packager as an
+extra level of authentication, but the access control should already
+prevent unathorized access to changing the software packages. 
+
+
+== Software Integrity ==
+After installing the software on a resource we must be able to assure
+that users using the software can trust the integrity of the
+installation.
+Either by installing in a read-only location or by means of some kind of
+checksumming or cryptographic signing.
+If the software is installed in e.g. a separate user account it is
+simple to setup read-only access from the grid jobs. If on the other
+hand the same account is used for installation we will have to verify
+the installed software before blindly trusting it.
+
+
+== Install Location and Privileges ==
+Another topic related to security is the install location and privileges on the
+resources. Depending on the actual software it may be possible to
+install completely in user space without any additional
+privileges. This is the least intrusive way to operate, so this is an
+appealing choice when possible, but we will find software installations that require
+administrative privileges to work. We should investigate the actual
+software packages a bit further before deciding if it makes sense to
+discriminate between privileged and unprivileged installation.
+
+To avoid grid jobs tampering with the installed packages, we should
+allow installation to take place in a fashion or location which allows
+read access but prevents write access for the grid jobs.
+Further details are availble below, but first we need to consider the
+package distribution format.
+
+== Distribution format ==
+We need to decide on a suitable distribution format for installation and
+upgrades. Depending on the actual software in the repository it may or
+may not be necessary to compile software as a part of the installation.
+
+We will most likely need to include support for some kind of pre and
+post install hooks in order to get the necessary level of flexibility.
+The scope of this project is not to create a full blown package
+management system, however, so simplicity or reuse is required.
+
+We can choose to install package contents in the ordinary file tree
+layout or in a number of isolated setups. Using the default path prefix of
+/usr or /usr/local will make the packages available to all users without
+any further configuration in most setup. However, it makes it much more
+difficult to maintain and switch between versions and it requires
+administrative privileges for write access. Isolated
+installlation strategies are much better suited for those situations,
+but may require a bit of extra configuration to make the software
+installatione more user friendly. The simplest method for isolated
+installation is ordinary installation (configure ; make ; make install)
+modified with an isolated path (e.g. /opt) as install prefix. This build
+format can then either be distributed as a prebuilt tarball or be build
+on site. Another possibility is to build and distribute loop mountable image
+files with the compiled software. This makes it easy to compress the
+software during transfer and completely isolates the installation from
+the native file system. It even allows a read only installation for some
+image types like iso or squashfs. If on the other hand we distribute
+packages as e.g. a tarball we need to unpack it somewhere where grid
+jobs can read and execute the software but not modify it. In order to
+install packages without additional privileges this requires some
+preparation, like setting up a separate user which is used to store packages.
+
+%TODO: consider httpfs or similar for remote mounting of big images
+%TODO: install/mount sw under dedicated RE user to avoid tampering
+%TODO: ..or add optional reinstall based on checksum (also supports updates)
+%TODO: consider permissions required for (loop/remote) mount
+%TODO: support access to REs based on job owner/VO?
+%TODO: zeroinstall as user space solution
+
+
+== Versioning ==
+In order to handle upgrades to software packages we need some kind of
+versioning. Most software developers periodically release their software
+with some version numbering, but our own packaging may require an
+additional version numbering in order to support changes to the
+packaging of a particular version of the software. We need to decide on
+a generic version numbering that allows the repositry interfaces to
+handle version logic consistently in relation to upgrades. 
+It would of course be nice to have automatic upgrading of packages, but that is
+not a requirement.
+
+
+== Dependencies ==
+We should at least include basic information about any external software
+dependencies of our packages. Rudimentary dependency checking would be
+nice to have but leaving it to the resource owners is acceptable as long
+as the information is made available to them.
+
+
+== Flexibility ==
+Resources must be able to install single software packages and keep
+certain versions of the packages on their system even when new versions
+appear.
+We must make sure that we don't bind our framework to closely with any
+particular platform or distribution. If we decide to provide e.g. RPMs
+or DEBs we should provide platform agnostic alternatives too.
+The same applies to file system layout where we can't require resources
+to adhere to strict layout rules.
+
+
+== Licensing Issues ==
+Some of the packages that we may want to provide includes commericial,
+closed source software that we are not allowed to distribute. Thus our
+framework must support ways for the licensee to implicitly or explicitly
+load those parts as a part of the installation process. Preferably we
+should script the download directly on the resource but this may not
+always be possible either. Having the resource admin manually enter a
+path to the software can be a last resort.
+
+
+= Design =
+Although this is still early in the project phase, we will try to begin
+outlining a design for the repository. We expect to iterate through several
+design, implementation and test phases before reaching the final result.
+
+== Files and Folders ==
+The repository will obviously have to include some files and folders for
+the software packages. We can learn from the distribution repositories
+where a single root directory holds a directory tree with subdirectories for things like source and
+binary packages, for each supported architecture and for license group.
+%[images/repository-layout.png]
+
+Distribution repositories tend to include a distribution version that
+indicates a particular set of core libraries (libc, etc). As software
+may depend on a particular version of these core libraries we may have
+to do something like that.
+
+
+% architecture, packages, install scripts, optional verification data
+
+
+== Package Structure ==
+The most common package formats RPM and DEB share the basic layout of
+some compressed binary data and some plain text metadata for each package.
+Most likely we can choose to use the same idea and come up with our own
+package meta data or reuse existing ideas where appropriate.
+It seems existing package definitions are simple enough in structure to
+use a flat text format with just one level of keys and values.
+%[images/package-structure.png]
+
+
+== Package Interfaces ==
+Resource owners should be able to view and install packages from the
+repository. Thus the package meta data must be presented in a user
+friendly manner. Package management will require either some package
+tools or just self-contained installers. Again we must keep requirements
+low and not require e.g. the availability of a graphical user interface.
+In the simplest solution the resource owner just downloads a package
+shell script that supports install, upgrade and remove commands. A
+tarball with package data can be inlined if internet access during
+script execution is not required. The same applies for most meta data.
+
+%[images/repo-read-access.png]
+
+%//Figure: Repository access//
+
+
+%[images/repo-modify-access.png]
+
+%//Figure: Repository modify access//
+
+
+
+
+= Future Work =
+%TODO: lay out the path for future work in relation to the roadmap
+According to the grid.dk roadmap the project includes the subtasks:
+
+ 1. detailed specification of an XML catalogue format
+ 2. specification and implementation of a web service to interact with the catalogue
+ 3. implementation of a web or GUI front-end to edit the catalogue
+ 4. implementation of automatic software provisioning systems for both
+
+ARC and MIG – starting  with the existing proof-of-concept
+implementations
+
+As indicated above the first subtask may not be relevant at all for the
+generic solution. Possibly it makes sense in relation to particular
+setups, but we should not force it on everybody.
+Depending on the definition of web service the same may apply to the
+second one. The generic interface may very well be as simple as a set of
+relatively static web pages. Again it makes more sense to keep the core
+simple and build any complex structures on top of the simple core when
+necessary, rather than forcing a complex structure on everyone.
+
+The first stages of te project will focus on developing the core package
+repository structure. This includes the basic package format and actual
+repository layout. The next natural step will be to settle for a package
+management structure. I.e. how the packages are to be used on the
+resources.
+
+

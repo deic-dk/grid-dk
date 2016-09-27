@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/libssl0.9.8.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>libssl0.9.8</name>
+  <summary>SSL shared libraries</summary>
+  <description>libssl and libcrypto shared libraries needed by programs like
+apache-ssl, telnet-ssl and openssh.
+
+It is part of the OpenSSL implementation of SSL.</description>
+  <!-- no binaries here, library only -->
+  <group arch="Linux-i386">
+    <requires interface="http://portal.grid.dk/0install/zlib1g.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <implementation id="sha1new=17d13fde3d9653dbef602ad71787ad3f4de5bf7d" released="2009-05-27" version="0.9.8">
+      <archive href="http://ftp.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8g-15_i386.deb" size="2973590"/>
+    </implementation>
+    <implementation arch="Linux-x86_64" id="sha1new=5879a85bf82fae45faf1e4cd4b886f5867eb30f6" released="2009-05-27" version="0.9.8">
+      <archive href="http://ftp.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8g-15_amd64.deb" size="975060"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VOZ3W8lGjpY9URAgEkAJ4sJfEdAV6fJw+W+LvMkLP5YNw/UwCdHVl4mAKU7YqafVoA
+9a50y0rfgWc=
+
+-->

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<jnlp spec="1.0+"
+      codebase="http://portal.grid.dk/sso/"
+      href="jnlp/gridcert.jnlp">
+   <information>
+      <title>Acquire a short-lived certificate for grid resources.</title>
+      <vendor>Grid.dk</vendor>
+      <description>Confusa SLSC Web Application</description>
+      <!--<homepage href="http://java.sun.com/docs/books/tutorial/deployment/webstart/running.html"/>-->
+      <!--<description kind="short">ClickMeApp uses 3 custom classes plus several
+       standard ones</description>-->
+      <offline-allowed/>
+   </information>
+   <resources>     
+	<jar href='lib/soauth-httpclient4-20090618.jar'/>
+	<jar href='lib/snetx.jar'/>
+	<jar href='lib/scommons-logging-1.1.jar'/>
+	<jar href='lib/soauth-1.4.jar'/>
+	<jar href='lib/scog-jglobus-1.7.0.jar'/>
+	<jar href='lib/sBrowserLauncher2-all-1_3.jar'/>
+	<jar href='lib/scommons-codec-1.2.jar'/>
+	<jar href='lib/sbcprov.jar'/>
+	<jar href='lib/shttpcore-4.0-beta2.jar'/>
+	<jar href='lib/shttpclient-4.0-beta2.jar'/>
+   	<jar href="build/jar/sConfusa.jar"/> 
+
+ <j2se version="1.6+"
+	      href="http://java.sun.com/products/autodl/j2se"/>
+   </resources>
+   <application-desc main-class="ConfusaUI">
+   		<!--<argument>Arg1=1234</argument>-->
+	</application-desc>
+
+   <security>
+     <all-permissions/>
+   </security>
+
+   
+</jnlp>

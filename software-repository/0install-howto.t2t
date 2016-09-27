@@ -1,0 +1,501 @@
+Grid.dk - 0install HOWTO
+Using 0install for distributing and running software
+Last updated %%date(%d-%m-%Y %H:%M)
+% End of the three default header lines
+%! Encoding: utf8
+%! Options : --toc --enum-title
+% End of the optional settings lines
+
+%
+% This is a txt2tags formatted document.
+% Generate HTML version by running:
+% txt2tags --toc -t html -o NAME.html NAME.t2t
+%
+% Generate LaTeX version by running:
+% txt2tags --toc -t tex -o NAME.tex NAME.t2t
+%
+% The Makefile wraps up generation including the two examples above
+% nicely. So just run: 
+% make NAME.{html,ps,pdf}
+
+
+%%toc
+
+= Preparations for 0install =
+0install requires a few python and library dependencies to run. On most
+desktop systems these dependencies will be included by default, but
+especially for non-desktops and older installations they may be
+missing. Luckily they can be installed in user space in that
+case. Please refer to the appendix for detailed install instructions.
+
+
+= Instructions for installing 0install =
+Packages are available for most common distributions, but we can install
+from source if they are not recent or if we do not have root access.
+
+Basically we can follow the instructions for installing from source in
+user space:
+ 
+http://0install.net/install-source.html
+
+but please note the requirements.
+
+On my Debian stable I can't get through with the latest version, 0.42.1,
+which switched from glade to some gtk-builder stuff that I can't find for my
+dist, but staying with 0.41 works fine. 
+
+According to the zero install developers the gobject dependency (even in
+CLI mode) is hard to remove, but at least it turns out to be installable
+in user space on resources. Thus, it may be necessary to first install
+either Python GObject (the python-gobject package in Debian) or PyGTK
+(python-gtk2) which pulls in all GUI dependencies. Please refer to the
+appendix for detailed install instructions if you need to install them
+in user space.
+
+Then additionally only python (>=2.5) and gnupg are needed, and they
+can be installed in user space, too.
+
+All user space installation should be made in a location that is
+read-only by the grid jobs eventually running on the resource. We often
+get a second account for setting up read-only runtime environments in
+user space, and that account will do just fine for the zero install
+software and dependencies, too.
+
+A complete log of the commands I used follows here:
+```
+ZI_VERSION="0.41"
+mkdir -p ~/build
+cd ~/build
+wget -c http://sourceforge.net/projects/zero-install/files/injector/${ZI_VERSION}/zeroinstall-injector-${ZI_VERSION}.tar.bz2/download
+wget -c http://sourceforge.net/projects/zero-install/files/injector/${ZI_VERSION}/zeroinstall-injector-${ZI_VERSION}.tar.bz2.sig/download
+gpg --recv-key --keyserver subkeys.pgp.net 59A53CC1
+gpg zeroinstall-injector-${ZI_VERSION}.tar.bz2.sig
+tar xjkf zeroinstall-injector-${ZI_VERSION}.tar.bz2
+cd zeroinstall-injector-${ZI_VERSION}
+python setup.py install --home ~/zero-install --install-data ~/zero-install/local
+export PATH=${HOME}/zero-install/bin:${PATH}
+export PYTHONPATH=${HOME}/zero-install/lib/python
+```
+
+Please note that you may  need to ctrl-c and retry the gpg recv-keys
+command if it hangs for a long time.
+
+You can manually run the last two commands or add them to your shell RC if you want to use
+zero-install again next time you log in.
+
+Now you should be able to setup and grab e.g. the pkg2zero app used for the next
+section with:
+```
+0launch -c http://0install.net/2009/interfaces/pkg2zero.xml -h
+0alias pkg2zero http://0install.net/2009/interfaces/pkg2zero.xml
+```
+
+The '0launch -c' command is only used to explicitly pull in the
+package to avoid implicitly opening a gui with the 0alias command.
+It may be enough to just make sure that the DISPLAY environment isn't
+set instead.
+If no errors occur you are now ready to proceed using the 'pkg2zero'
+command to convert Debian packages to zeroinstall ones. 
+
+
+= Instructions for building 0install packages =
+
+
+== 0release ==
+The 0release tool may be used for publishing from source:
+
+http://0install.net/0release.html
+
+
+== pkg2zero ==
+It is possible to convert deb's and rpm's to zeroinstall packages with
+the pkg2zero tool mentioned above:
+
+http://0install.net/pkg2zero.html
+
+Please note that packages will not generally just work out of the box
+when using this approach. The package needs to be packed in a relatively
+portable way!
+
+Below is a working deb package example with the GNU awk command line
+application, which works out of the box. It has minimal dependencies and
+follows general install recommendations, so that probably helps. Using
+rpm packages and rpm repo metadata instead of the deb Packages files
+should be quite similar. Please refer to the pkg2zero documentation on
+the URL above or just run:
+```
+pkg2zero -h
+```
+to get short usage information for the other use cases.
+
+
+=== Preparations for repackaging ===
+First of all we prepare a build environment where we download the latest
+public package information for the architectures we want to support:
+```
+mkdir -p ${HOME}/build
+cd ${HOME}/build/
+wget ftp://ftp.debian.org/debian/dists/stable/main/binary-amd64/Packages.bz2
+bunzip2 Packages.bz2
+rm -f Packages-amd64
+mv Packages{,-amd64}
+wget ftp://ftp.debian.org/debian/dists/stable/main/binary-i386/Packages.bz2
+bunzip2 Packages.bz2
+rm -f Packages-i386
+mv Packages{,-i386}
+```
+The build process can then pull all the necessary information from those
+two files. If we build again later we may want to pull in the latest
+version of the Packages files to catch any distro updates.
+
+
+=== Optional local testing ===
+To test that the package can be converted at all on an i386 OS:
+```
+pkg2zero -p Packages-i386 gawk gawk.xml
+0launch -c ./gawk.xml --version
+```
+
+Just accept default URL for now if prompted in pkg2zero.
+
+With this setup we skip package signing as it isn't meant for
+distribution, anyway.
+
+
+=== Final building for distribution ===
+When we are ready we can move on to building and signing the version for
+distribution:
+```
+rm -f gawk.xml
+pkg2zero -k 'Jonas Bardino' -p Packages-amd64 gawk gawk.xml
+pkg2zero -k 'Jonas Bardino' -p Packages-i386 gawk gawk.xml
+```
+Please enter gpg passphrase and public distribution URL when requested.
+
+I just signed with my existing GPG key and used
+http://bardinosen.dk/0install/gawk.xml for the download location as that
+was the web server I happened to have easy write access to at the time.
+
+Now the package is available in the gawk.xml file, and it can then be
+uploaded to the given URL for public use.
+
+
+== Verifying the packages ==
+Uploaded packages are human readable from the web server because of an
+included style sheet reference. So you can simply point your browser to
+the upload URL:
+
+http://bardinosen.dk/0install/gawk.xml
+
+There you will find the full package description and details.
+
+It is also easy to check that your packages are installable with feedlint:
+```
+0launch -c http://0install.net/2007/interfaces/FeedLint.xml
+0alias feedlint http://0install.net/2007/interfaces/FeedLint.xml
+feedlint gawk.xml
+feedlint http://bardinosen.dk/0install/gawk.xml
+```
+The first feedlint call should say OK without checking signature.
+The second one should say OK and verify signature.
+
+
+== Testing the package ==
+As we built the package for both x86 and x86_64 (aka i386 and amd64) we
+can proceed to the testing on all such available hosts. 
+Set up zero-install on the test host either using distro packages or as
+described above. Then install the package with the commands:
+```
+0launch -c http://bardinosen.dk/0install/gawk.xml
+0alias awk http://bardinosen.dk/0install/gawk.xml
+```
+Please accept the signature if prompted.
+
+You can now test the zero-installed awk command:
+```
+which awk
+awk -v
+echo first second third fourth | awk '{ print $2; }'
+```
+The which command should point to the your ${HOME}/zero-install/bin/awk
+and the awk version should match the packaged version instead of any
+native versions. 
+The actual test command should print 'second'.
+
+I've tried it with success on both architectures with the same Debian
+distro and on a newer 64-bit Ubuntu. As it only depends on glibc and
+uses the packages from Debian stable it will most likely work on most
+recent distributions. With more complex packages it may take more work
+to get a good result.
+
+
+= Appendix =
+
+
+== 0install Dependencies from Source ==
+If the host doesn't provide the required Python and gobject dependencies
+they can be installed from source in user space.
+The following sections will list the steps, which I have succesfully
+used to manually install all zero install dependencies in user space on
+CentOS-5.3, Ubuntu-8.04, -9.04 and -9.10.
+
+All steps are automated in the setup-0install.sh shell script here.
+
+
+=== General environment initialization ===
+Some environment setting are needed by multiple of the dependencies, so
+we'll initialize them once and for all. they need to be initialized in
+each shell session when using zero install in the future, too.
+```
+mkdir -p ${HOME}/zero-install/deps/usr
+mkdir -p ${HOME}/build
+export PATH=${HOME}/zero-install/deps/usr/bin:${PATH}
+export LD_LIBRARY_PATH=${HOME}/zero-install/deps/usr/lib:${LD_LIBRARY_PATH}
+```
+
+
+=== Pkg-Config ===
+GLib and Python-gobject require pkg-config during build so we may need to pull
+that one in, too. 
+```
+PC_VERSION=0.23
+cd ${HOME}/build
+wget -c http://pkgconfig.freedesktop.org/releases/pkg-config-${PC_VERSION}.tar.gz
+nice tar xzkf pkg-config-${PC_VERSION}.tar.gz
+cd pkg-config-${PC_VERSION}
+nice ./configure --prefix=${HOME}/zero-install/deps/usr
+nice make install
+```
+
+=== Gettext ===
+Install Gettext and development headers from source if either is missing.
+Please note that with gcc >= 4.3 and gettext <= 0.17 we need to patch a single source file like done in 
+```
+http://cvs.savannah.gnu.org/viewvc/gettext/gettext-tools/src/write-catalog.c?root=gettext&r1=1.4&r2=1.5&view=patch
+```
+We pull a similar patch in from our own repo to get the paths right:
+```
+GETTEXT_VERSION=0.17
+PATCH_PATH=gettext-${GETTEXT_VERSION}-gcc-4.3-open-fix.diff
+cd ${DEST}/build
+wget -c http://ftpmirror.gnu.org/gettext/gettext-${GETTEXT_VERSION}.tar.gz
+nice tar xzf gettext-${GETTEXT_VERSION}.tar.gz
+cd gettext-${GETTEXT_VERSION}
+wget -c http://grid-dk.googlecode.com/svn/trunk/software-repository/${PATCH_PATH}
+patch -p0 < ${PATCH_PATH}
+rm -f ${PATCH_PATH}
+nice ./configure --prefix=${DEST}/zero-install/deps/usr
+nice make install
+```
+
+=== GLib ===
+Install GLib and development headers from source if either is missing:
+```
+GLIB_VERSION=2.20.5
+ARCH=amd64
+cd ${HOME}/build
+wget -c http://ftp.acc.umu.se/pub/GNOME/sources/glib/2.20/glib-2.20.5.tar.bz2
+nice tar xjkf glib-${GLIB_VERSION}.tar.bz2
+cd glib-${GLIB_VERSION}
+nice ./configure --prefix=${HOME}/zero-install/deps/usr
+nice make install
+export PKG_CONFIG_PATH=${HOME}/zero-install/deps/usr/lib/pkgconfig:${PKG_CONFIG_PATH}
+export CPATH=${HOME}/zero-install/deps/usr/include:${CPATH}
+```
+
+
+=== Python ===
+We need a Python 2 (>=2.5) for 0install to work. This example uses 2.6.5
+but just grab the latest stable 2.x from python.org.
+```
+PY_VERSION=2.6.5
+cd ${HOME}/build/
+wget -c http://www.python.org/ftp/python/${PY_VERSION}/Python-${PY_VERSION}.tar.bz2
+wget -c http://www.python.org/download/releases/${PY_VERSION}/Python-${PY_VERSION}.tar.bz2.asc
+gpg --recv-key --keyserver subkeys.pgp.net A74B06BF
+gpg Python-${PY_VERSION}.tar.bz2.asc
+nice tar xjkf Python-${PY_VERSION}.tar.bz2
+cd Python-${PY_VERSION}
+nice ./configure --prefix=${HOME}/zero-install/deps/usr
+nice make install
+ln -s python2.6 ${HOME}/zero-install/deps/usr/bin/python
+```
+
+Please note that you may  need to ctrl-c and retry the gpg recv-keys
+command if it hangs for a long time.
+
+
+=== Python-gobject ===
+We need the GObject bindings for python as well for 0install to
+work. This example uses 2.20.0 but just grab e.g. the latest one from 
+http://ftp.gnome.org/pub/GNOME/sources/pygobject/
+```
+MAJOR=2
+MINOR=20
+PGO_VERSION=${MAJOR}.${MINOR}.0
+cd ${HOME}/build/
+wget -c http://ftp.gnome.org/pub/GNOME/sources/pygobject/${MAJOR}.${MINOR}/pygobject-${PGO_VERSION}.tar.bz2
+nice tar xjkf pygobject-${PGO_VERSION}.tar.bz2
+cd pygobject-${PGO_VERSION}
+nice ./configure --prefix=${HOME}/zero-install/deps/usr
+nice make install
+```
+
+If the configure step fails you probably need to follow the dependency
+chain even further before trying the remaining steps again.
+
+You should now be able to run python and use gobject from it with:
+```
+python -V
+python -c 'import gobject'
+```
+
+
+== 0install Dependencies from Binaries ==
+If the host doesn't provide the required Python and gobject dependencies
+they can theoretically be installed from precompiled binaries in user space.
+The following sections will list the steps, but please note that I have
+*not* managed to get a working setup this way, yet.
+
+
+=== Extracting from 0install feeds ===
+In general we use the 0install feeds for the required packages and
+manually extract the compiled binaries and set up environment as
+0install would normally help us do.
+It is useful to download or show the raw contents of the feeds using
+curl, as the stylesheet removes important details when viewing the feeds
+in a browser.
+Look for the lines on the form:
+```
+      <archive extract="glib-linux-i486-2.16.3"
+      href="http://riscque.net/3rd-party/GLib/glib-linux-i486-2.16.3.tar.bz2" size="3082302" type="application/x-bzip-compressed-tar"/>
+```
+This line means that we can download a tarball with the glib-2.16.3
+binaries for i486 based hosts from:
+http://riscque.net/3rd-party/GLib/glib-linux-i486-2.16.3.tar.bz2 
+
+The feed also contains information about environment settings needed for
+the package:
+```
+      <environment insert="lib/pkgconfig" mode="prepend"
+      name="PKG_CONFIG_PATH"/>
+      <environment insert="lib" mode="prepend" name="LD_LIBRARY_PATH"/>
+      <environment insert="bin" mode="prepend" name="PATH"/>
+      <environment insert="share" mode="prepend" name="XDG_DATA_DIRS"/>
+      
+      <environment insert="include/glib-2.0" mode="prepend"
+      name="CPATH"/>
+      <environment insert="lib/glib-2.0/include" mode="prepend" name="CPATH"/>
+```
+Each of these lines must be manually handled after extracting the
+binaries to a suitable path. I.e. the LD_LIBRARY_PATH environment must
+be extended to include the unpacked/lib dir.
+
+
+=== Pkg-Config from packages ===
+GLib and Python-gobject requires pkg-config during build so we may need to pull
+that one in, too. 
+```
+PC_VERSION=0.22-1
+ARCH=amd64
+cd ${HOME}/build
+wget -c http://ftp.debian.org/debian/pool/main/p/pkg-config/pkg-config_${PC_VERSION}_${ARCH}.deb
+dpkg --extract pkg-config_${PC_VERSION}_${ARCH}.deb ${HOME}/zero-install/deps
+```
+
+=== GLib from packages===
+We can manually use the 0install packaged glib from Debian in
+http://bardinosen.dk/0install/libglib2.0-0.xml and
+http://bardinosen.dk/0install/libglib2.0-dev.xml if no glib 2 packages
+are installed on the system. Otherwise this step can be skipped.
+Simply download and unpack the archives listed in the feed (e.g. for X86_64):
+```
+GLIB_VERSION=2.16.6-2
+ARCH=amd64
+cd ${HOME}/build
+wget -c http://ftp.debian.org/debian/pool/main/g/glib2.0/libglib2.0-0_${GLIB_VERSION}_${ARCH}.deb
+dpkg --extract libglib2.0-0_${GLIB_VERSION}_${ARCH}.deb ${HOME}/zero-install/deps
+wget -c http://ftp.debian.org/debian/pool/main/g/glib2.0/libglib2.0-dev_${GLIB_VERSION}_${ARCH}.deb
+dpkg --extract libglib2.0-dev_${GLIB_VERSION}_${ARCH}.deb ${HOME}/zero-install/deps
+for pc_path in ${HOME}/zero-install/deps/usr/lib/pkgconfig/*.pc; do
+    perl -p -i -e "s@prefix=/usr@prefix=${HOME}/zero-install/deps/usr@g" $pc_path
+done
+PKG_CONFIG_PATH=${HOME}/zero-install/deps/usr/lib/pkgconfig:${PKG_CONFIG_PATH}
+CPATH=${HOME}/zero-install/deps/usr/include:${CPATH}
+```
+
+
+== Securely Sharing Cache ==
+So far all jobs will use the same cache dir under the resource user
+account (under ~/.cache/0install.net/). This leads to potential security
+vulnerabilities because one job may tamper with the cached binaries
+which are automatically used by future jobs. One work around is to
+always use a private cache or force download each time, but that is not
+very efficient and removes the nifty offline support.
+
+A better solution is to rely on a separate RTE user on the resource to
+host a shared but secure cache directory in a way similar to the sharing
+example on:
+
+http://0install.net/sharing.html
+
+We can not expect to have sudo access, but we can use a SUID binary
+instead, then. 
+
+
+=== A Trusted RTE Helper ===
+Just like the example we can set up a shared cache but in the RTE user
+home and only using ordinary user account permissions:
+```
+mkdir -p ${HOME}/zero-install/cache
+mkdir -p ${HOME}/.config/0install.net/injector
+cat << EOF > ${HOME}/zero-install/bin/0store-secure-add-suid.c
+#include <unistd.h>
+#include <errno.h>
+
+main(int argc, char **argv, char **envp)
+{
+    if(setgid(getegid())) perror("setgid");
+    if(setuid(geteuid())) perror("setuid");
+    /* blocks IFS attack on non-bash shells */
+    char *env[] = {"HOME=$HOME", "PYTHONPATH=$PYTHONPATH", (char *)0};
+    execve("$HOME/zero-install/bin/0store-secure-add", argv, env);
+    perror(argv[0]);
+    return errno;
+}
+EOF
+make ${HOME}/zero-install/bin/0store-secure-add-suid
+rm -f ${HOME}/zero-install/bin/0store-secure-add-suid.c
+chmod 4755 ${HOME}/zero-install/bin/0store-secure-add-suid
+echo ${HOME}/zero-install/cache > ${HOME}/.config/0install.net/injector/implementation-dirs 
+cat << EOF > ${HOME}/zero-install/bin/0store-secure-add-helper
+#!/bin/sh
+# Run 0store-secure-add as the RE user from a clean environment
+
+exec ${HOME}/zero-install/bin/0store-secure-add-suid "\$@" < /dev/null
+EOF
+chmod 755 ${HOME}/zero-install/bin/0store-secure-add-helper
+```
+
+Please note that the above commands expects the environment to include
+the PYTHONPATH variable necessary to run zero install commands as the
+active user.
+
+Finally the actual grid user account should have the zero install
+environment bits configured and be told to use the shared cache. The
+latter can be done with the
+${HOME}/.config/0install.net/injector/implementation-dirs file like it
+was done for the RTE user, but it is more secure to use the
+--with-store=PATH flag in the actual 0launch command to avoid the risk
+of interference from any previous malign jobs.
+
+Testing with e.g. the gawk feed should print a lot of output including
+two important INFO lines:
+```
+echo 1 2 3 | 0launch -c -v -v http://bardinosen.dk/0install/gawk.xml '{ print $1; }'
+...
+INFO:root:Trying to add to system cache using ${HOME}/zero-install/bin/0store-secure-add-helper
+INFO:root:Added succcessfully.
+...
+```
+if everything is alright.

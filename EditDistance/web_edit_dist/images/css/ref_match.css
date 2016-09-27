@@ -1,0 +1,56 @@
+
+table {
+  width: auto;
+
+  margin: 2px;
+  
+  background: white;
+  border: 1px solid grey;
+  padding: 4px;
+  -moz-border-radius: 0;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-radius: 4px;
+	cursor: default;  
+	
+	font: 15px arial, sans-serif;
+}
+
+.ref_match_submit {
+  width: auto;
+
+  margin-top: 2px;
+  
+  background: white;
+  border: 1px solid grey;
+  padding: 4px;
+  -moz-border-radius: 0;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-radius: 4px;
+	cursor: default;  
+	
+	font: 15px arial, sans-serif;
+	
+}
+
+.ref_match_files {
+  width: auto;
+  background: white;
+  cursor: default;  
+  border: 0 ;
+  font: 15px arial, sans-serif;
+}
+
+.ref_match_job_view {
+  width: auto;
+  margin-top: 2px;
+  background: white;
+  border: 1px solid grey;
+  padding: 4px;
+  -moz-border-radius: 0;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-radius: 4px;
+	cursor: default;  
+}

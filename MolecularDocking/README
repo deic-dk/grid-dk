@@ -1,0 +1,64 @@
+			THE GRID DOCKER 
+
+	Molecular docking on grid using the Molegro Virtual Docker
+
+
+SETTING miguser.conf:
+To use the grid docker you need be able to access either the MiG or Grid.dk server via the downloadable user script. 
+For this you need to set the miguser.conf file. 
+
+This is a template: 
+
+migserver GRID_SERVER
+certfile /home/LOGIN/.globus/cert.crt
+keyfile /home/LOGIN/.globus/key.pem
+cacertfile /home/LOGIN/.globus/trusted_CA.crt
+
+If your key was generated using a pass phrase add the line :
+password PASSPHRASE
+
+
+1. CONFIGURATION
+Edit the configuration file dockingConfig.py to customize the docking procedure. The most important fields include:
+
+protein_file - path to protein file 
+ligands_file - path to ligand file
+num_ligands - number of ligands in the ligand file
+runs - number of runs per ligand. Since a randomize searched algorithm is used. Each run may produce different results.
+jobsize - number of job units. One job unit consists of 1 ligand, run 1 time. Ex.: 3 ligands, run twice creates 6 job units. A job size of 3 thus creates 2 jobs.
+
+
+
+2. USAGE
+Run the grid docking application by typing:	
+	python grid_docker.py <options>
+options: -help for help
+	 -l    for local execution (requires MVD installed locally)
+
+
+3. VIEWING RESULTS
+After a run the results are gathered in the file dockingresults/DockingResults_main.mvdresults. 
+This file can be opened if you have MVD installed locally. Note that this file references the *.mol2 files 
+that contain the actual molecule visualisation information. 
+
+When opening the result file MVD ask you to choose which ligand poses you wish to import. Choose the which ones to view and continue. 
+If you wish to see the ligand relative to the target protein (Ex.: target.mvdml) please import the file manually. Then remove click in the left
+menu to add/remove the components from the view.
+
+
+4. REMARKS
+If you do not have the Molegro Virtual Docker software installed on the grid resources you can 
+embed the the software in the jobs. To do this please copy the main molegro folder into the 
+MolecularDocking dir, so the paths fit the MVD paths in dockingConfig. Then disable the 
+use_mvd_RTE variable.
+
+
+5. REQUIREMENTS:
+- Python (tested using v2.5)
+- Access to Grid.dk or Minimum intrusion Grid. e.i.: ".globus/" or ".mig/" folder with grid.dk or MiG certs respectively.
+- The Molegro Virtual Docker (either as purchased, locally-installed software or as a grid runtime environment)
+- Curl
+
+
+Benjamin Sedoc
+

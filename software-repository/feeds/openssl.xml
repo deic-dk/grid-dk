@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/openssl.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>openssl</name>
+  <summary>Secure Socket Layer (SSL) binary and related cryptographic tools</summary>
+  <description>This package contains the openssl binary and related tools.
+
+It is part of the OpenSSL implementation of SSL.
+
+You need it to perform certain cryptographic actions like:
+ -  Creation of RSA, DH and DSA key parameters;
+ -  Creation of X.509 certificates, CSRs and CRLs;
+ -  Calculation of message digests;
+ -  Encryption and decryption with ciphers;
+ -  SSL/TLS client and server tests;
+ -  Handling of S/MIME signed or encrypted mail.</description>
+  <binaries xmlns="http://portal.grid.dk/0install/namespace">
+    <binary name="openssl"/>
+  </binaries>
+  <group arch="Linux-i386" main="usr/bin/openssl">
+    <requires interface="http://portal.grid.dk/0install/libssl0.9.8.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <requires interface="http://portal.grid.dk/0install/zlib1g.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <implementation id="sha1new=4476d01d63bebecd25e6204239188cee4ec0386d" released="2009-05-27" version="0.9.8">
+      <archive href="http://ftp.debian.org/debian/pool/main/o/openssl/openssl_0.9.8g-15_i386.deb" size="1036008"/>
+    </implementation>
+    <implementation arch="Linux-x86_64" id="sha1new=05e4b10a23298b0953e0a191a9c4b0b366c1a26e" released="2009-05-27" version="0.9.8">
+      <archive href="http://ftp.debian.org/debian/pool/main/o/openssl/openssl_0.9.8g-15_amd64.deb" size="1042752"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VVZ3W8lGjpY9URAlezAKDo82dK6MWqk07VkRbW+S59BgYgjQCghQxLPHRnluwqfsQq
+a6WsjRtM5jA=
+
+-->

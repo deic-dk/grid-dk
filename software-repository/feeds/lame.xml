@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/lame.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>lame</name>
+  <summary>LAME Ain't an MP3 Encoder</summary>
+  <description>Lame is a program which can be used to create compressed audio files. (Lame
+aint MP3 encoder). These audio files can be played back by popular mp3
+players such as mpg123. To read from stdin, use &quot;-&quot; for &lt;infile&gt;. To write
+to stdout, use a &quot;-&quot; for &lt;outfile&gt;.
+
+This package contains the frontend encoder binary.</description>
+  <!-- no binaries tag needed, executable name is package name -->
+  <group arch="Linux-x86_64" main="usr/bin/lame">
+    <implementation id="sha1new=93695a9381a5a8538875b52d08e8331f3e00d3f5" released="2009-11-09" version="3.98.2-0.4">
+      <archive href="http://debian-multimedia.org/pool/main/l/lame/lame_3.98.2-0.4_amd64.deb" size="339682"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=8534e174fbdd1b9f7750f644b6a32049483b805c" released="2009-11-09" version="3.98.2-0.4">
+      <archive href="http://debian-multimedia.org/pool/main/l/lame/lame_3.98.2-0.4_i386.deb" size="333910"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VFZ3W8lGjpY9URAt+BAJwIsj33zOyK9PAMyqNK1lDdsYe0tACeO82SOf+Qn9k128Z+
+1wzxP55Y8bw=
+
+-->

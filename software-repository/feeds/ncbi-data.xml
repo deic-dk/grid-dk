@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/ncbi-data.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>ncbi-data</name>
+  <summary>Platform-independent data for the NCBI toolkit</summary>
+  <description>This package contains support files needed by the NCBI toolkit on all
+platforms.</description>
+  <icon href="http://0install.net/feed_icons/Depend.png" type="image/png"/>
+  <binaries xmlns="http://portal.grid.dk/0install/namespace">
+    <binary name="vibrate"/>
+  </binaries>
+  <group arch="Linux-*" main="usr/bin/vibrate">
+    <implementation id="sha1new=fbf9db771c594e940d53956d86df9ee801b82013" released="2010-02-23" version="6.1.20080302-4">
+      <archive href="http://ftp.debian.org/debian/pool/main/n/ncbi-tools6/ncbi-data_6.1.20080302-4_all.deb" size="2658532"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VTZ3W8lGjpY9URAhSDAJ9tOnudcm9s11h/wcsHUALgL4/JigCg3SWGfLUvvBjLTrdE
+ca2Zs9f8fGc=
+
+-->

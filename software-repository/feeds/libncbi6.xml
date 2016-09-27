@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/libncbi6.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>libncbi6</name>
+  <summary>NCBI libraries for biology applications</summary>
+  <description>The NCBI Software Development Toolkit was developed for the production and
+distribution of GenBank, Entrez, BLAST, and related services by NCBI. It
+allows you to read and write NCBI ASN.1 files, builds Blast or Entrez, etc.</description>
+  <icon href="http://0install.net/feed_icons/Depend.png" type="image/png"/>
+  <!-- no binaries here, library only -->
+  <group arch="Linux-x86_64">
+    <requires interface="http://portal.grid.dk/0install/ncbi-data.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <implementation id="sha1new=fc9e5139d9c868a25cb1e30fead63251ff3219c7" released="2010-02-23" version="6.1.20080302-4">
+      <archive href="http://ftp.debian.org/debian/pool/main/n/ncbi-tools6/libncbi6_6.1.20080302-4_amd64.deb" size="3914856"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=ff28287899c8d2ad58eb58a7497ab36fe432abcc" released="2010-02-23" version="6.1.20080302-4">
+      <archive href="http://ftp.debian.org/debian/pool/main/n/ncbi-tools6/libncbi6_6.1.20080302-4_i386.deb" size="3649492"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VJZ3W8lGjpY9URAiDpAJ9ZSz+gEI++yfM6Z4Crydxyng04NACg1O1mQ4X85aDQvjY5
+l0m9ixXMEz8=
+
+-->

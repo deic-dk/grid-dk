@@ -1,0 +1,176 @@
+    #
+    # OpenSSL configuration file for custom Certificate Authority. Use a
+    # different openssl.cnf file to generate certificate signing requests;
+    # this one is for use only in Certificate Authority operations (csr ->
+    # cert, cert revocation, revocation list generation).
+    #
+    # Be sure to customize this file prior to use, e.g. the commonName and
+    # other options under the root_ca_distinguished_name section.
+    #
+    # http://sial.org/howto/openssl/ca/
+    # http://www.openssl.org/docs/apps/ca.html
+    #
+    # (c) Original: http://sial.org/howto/openssl/ca/
+    # (c) changes and extensions:
+    #     03/2009 Jost Berthold, grid.dk
+    #
+    
+    # this will be written by sed (makefile target "config")
+    CAHOME=__CAHOME_REPLACE__
+
+
+    RANDFILE                = $ENV::CAHOME/.rnd
+
+    [ ca ]
+    default_ca      = CA_default
+
+    [ CA_default ]
+    dir             = $ENV::CAHOME
+    # we do not use this one:
+    #certs           = $dir/certs
+    new_certs_dir   = $dir/newcerts
+    crl_dir         = $dir/crl
+    database        = $dir/index
+
+    certificate     = $dir/ca-cert.pem
+    serial          = $dir/serial
+    crl             = $dir/ca-crl.pem
+    private_key     = $dir/private/ca-key.pem
+    RANDFILE        = $dir/private/.rand
+
+    x509_extensions = usr_cert
+
+    # Make new requests easier to sign - allow two subjects with same name
+    # (Or revoke the old certificate first.)
+    unique_subject  = no
+
+    # Comment out the following two lines for the "traditional"
+    # (and highly broken) format.
+    name_opt        = ca_default
+    cert_opt        = ca_default
+
+    default_crl_days= 30
+    default_days    = 365
+    # do not use MD5: http://www.win.tue.nl/hashclash/rogue-ca/
+    # pick a stronger hash, if possible
+    default_md      = sha1
+    # MSIE may need following set to yes?
+    preserve        = no
+
+    # A few difference way of specifying how similar the request should look
+    # For type CA, the listed attributes must be the same, and the optional
+    # and supplied fields are just that :-)
+    policy          = policy_country
+
+    # For the CA policy
+    [ policy_match ]
+    countryName             = match
+    stateOrProvinceName     = match
+    organizationName        = match
+    organizationalUnitName  = optional
+    commonName              = supplied
+    emailAddress            = optional
+
+    [ policy_country ]
+    countryName             = supplied
+    stateOrProvinceName     = optional
+    localityName            = optional
+    organizationName        = optional
+    organizationalUnitName  = optional
+    commonName              = supplied
+    emailAddress            = optional
+
+    ####################################################################
+    [ req ]
+    default_bits            = 2048
+    default_keyfile         = $ENV::CAHOME/private/ca-key.pem
+    # do not use MD5: http://www.win.tue.nl/hashclash/rogue-ca/
+    # pick a stronger hash, if possible
+    default_md              = sha1
+
+    #prompt                  = no
+    distinguished_name      = root_ca_distinguished_name
+    #distinguished_name      = r_distinguished_name
+
+    x509_extensions = v3_ca
+
+    # Passwords for private keys if not present they will be prompted for
+    input_password  = amazonARC
+    output_password = amazonARC
+
+    # This sets a mask for permitted string types. There are several options. 
+    # default: PrintableString, T61String, BMPString.
+    # pkix   : PrintableString, BMPString.
+    # utf8only: only UTF8Strings.
+    # nombstr : PrintableString, T61String (no BMPStrings or UTF8Strings).
+    # MASK:XXXX a literal mask value.
+    # WARNING: current versions of Netscape crash on BMPStrings or UTF8Strings
+    # so use this option with caution!
+    string_mask = nombstr
+
+    # req_extensions = v3_req
+
+    [ root_ca_distinguished_name ]
+    #emailAddress = ca@grid.dk
+    #commonName = amazonARC-ca
+    countryName = DK
+    stateOrProvinceName = Denmark
+    localityName = Copenhagen
+    0.organizationName = GRIDDK
+
+    [ req_distinguished_name ]
+    countryName = DK
+    stateOrProvinceName = Denmark
+    localityName = Copenhagen
+    0.organizationName = GRIDDK
+    emailAddress = ca@grid.dk
+
+    [ usr_cert ]
+
+    # These extensions are added when 'ca' signs a request.
+
+    # This goes against PKIX guidelines but some CAs do it and some software
+    # requires this to avoid interpreting an end user certificate as a CA.
+
+    basicConstraints=CA:FALSE
+
+    # PKIX recommendations harmless if included in all certificates.
+    subjectKeyIdentifier=hash
+    authorityKeyIdentifier=keyid,issuer:always
+
+    nsCaRevocationUrl               = https://grid.dk/ca-crl.pem
+    #nsBaseUrl
+    #nsRevocationUrl
+    #nsRenewalUrl
+    #nsCaPolicyUrl
+    #nsSslServerName
+
+    [ v3_req ]
+
+    # Extensions to add to a certificate request
+
+    basicConstraints = CA:FALSE
+    keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+
+    [ v3_ca ]
+
+
+    # Extensions for a typical CA
+
+    # PKIX recommendation.
+    subjectKeyIdentifier=hash
+    authorityKeyIdentifier=keyid:always,issuer:always
+
+    # This is what PKIX recommends but some broken software chokes on critical
+    # extensions.
+    #basicConstraints = critical,CA:true
+    # So we do this instead.
+    basicConstraints = CA:true
+
+    [ crl_ext ]
+
+    # CRL extensions.
+    # Only issuerAltName and authorityKeyIdentifier make any sense in a CRL.
+
+    # issuerAltName=issuer:copy
+    authorityKeyIdentifier=keyid:always,issuer:always

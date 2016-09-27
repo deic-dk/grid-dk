@@ -1,0 +1,139 @@
+user-day
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+            out.start = doc.start_time.substring(0,10);
+        }
+        return([doc.global_user_name, 
+                out.start]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+    emit(out.keyproject(),out.valproject());
+}
+machine-day
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        out.machine = "no machine";
+        if ("machine_name" in doc) {
+            out.machine = doc.machine_name;
+        }
+        if ("start_time" in doc) {
+            out.start = doc.start_time.substring(0,10);
+        }
+        return([out.machine, out.start]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}
+summary-day
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+            out.start = doc.start_time.substring(0,10);
+        }
+        return(['(Summary)', out.start]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}
+day-user
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+            out.start = doc.start_time.substring(0,10);
+        }
+        return([out.start,doc.global_user_name]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+    emit(out.keyproject(),out.valproject());
+}
+day-machine
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        out.machine = "no machine";
+        if ("machine_name" in doc) {
+            out.machine = doc.machine_name;
+        }
+        if ("start_time" in doc) {
+            out.start = doc.start_time.substring(0,10);
+        }
+        return([out.start,out.machine]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}
+day-summary
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+            out.start = doc.start_time.substring(0,10);
+        }
+        return([out.start,'(Summary)']);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}

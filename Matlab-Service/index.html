@@ -1,0 +1,656 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!-- 
+# (C) 2010 Jost Berthold (berthold at diku.dk), grid.dk
+#          E-science Center, Copenhagen University
+# This file is part of MatLab Grid service.
+# 
+# MatLab Grid service is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# MatLab Grid service is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="/images/site.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/cert_redirect/.default.css" media="screen"/>
+
+
+<title>
+MatLab Grid Service
+</title>
+<script type="text/javascript" src="/images/js/jquery.js">
+</script>
+
+<link rel="stylesheet" type="text/css" 
+      href="/images/css/jquery.managers.css" media="screen"/>
+<link rel="stylesheet" type="text/css" 
+      href="/images/css/jquery.contextmenu.css" media="screen"/>
+<link rel="stylesheet" type="text/css" 
+      href="/images/css/jquery-ui.css" media="screen"/>
+
+<script type="text/javascript" src="/images/js/jquery.js"></script>
+<script type="text/javascript" src="/images/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/images/js/jquery.form.js"></script>
+<script type="text/javascript" src="/images/js/jquery.prettyprint.js"></script>
+<script type="text/javascript" src="/images/js/jquery.filemanager.js"></script>
+<script type="text/javascript" src="/images/js/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="/images/js/jquery.tablesorter.pager.js"></script>
+<script type="text/javascript" src="/images/js/jquery.contextmenu.js"></script>
+
+<script type="text/javascript">
+
+// global variables used by many scripts, corrected below if possible
+var the_vgrid = "__VGRID__";
+
+//   runtime env. name, need to be correct
+var matlab_c = "MATLAB-COMPILE";
+var matlab_e = "MATLAB-RUNTIME";
+
+// timer for refreshing, moved out here to allow disabling it
+var refresh_timer;
+var refresh_rate = 1000 * 60 * 2; // milliseconds
+
+function toggle_refresh() {
+    var is_on = $( "#refreshing" )[0].checked;
+
+    if (is_on) {
+        list_refresh();
+	out_refresh();
+        refresh_timer = setInterval("list_refresh();out_refresh()", 
+	                            refresh_rate);
+    } else {
+        clearInterval(refresh_timer);
+    }
+}
+
+if (compile_submit == undefined ) {
+    var compile_submit = function() { 
+         alert("Setup error: Required javascript missing."); 
+	 };
+	   }
+
+  // some onclick-functions
+
+  // for the menu:
+  function showAll() {
+    $( ".pagepart" ).removeClass("hidden");
+    out_refresh();
+    list_refresh();
+  }
+  function noneExcept(name) {
+    $( ".pagepart" ).addClass("hidden");
+    $( "#" + name  ).removeClass("hidden");
+    out_refresh();
+    list_refresh();
+  }
+  function allExcept(name) {
+    $( ".pagepart" ).removeClass("hidden");
+    $( "#" + name  ).addClass("hidden");
+    out_refresh();
+    list_refresh();
+  }
+
+  // for "clear" functionality
+  function del( id ) {
+      $( "#" + id ).empty();
+  }
+
+  // init file chooser dialogs
+  function init_dialogs() {
+    var open_chooser = mig_filechooser_init(
+               "fm_filechooser"
+             , function(file) { return;}
+             , true
+             );
+
+    $( "#choose_instr" ).click( function() {
+                open_chooser("Choose main file"
+                             , function(file) {
+                              $( "#file_name" ).attr("value",file);
+                              });
+    });
+
+    $( "#choose_other" ).click( function() {
+                open_chooser("Add other files"
+                             , function(file) {
+                              $( "#other_names" ).append(file + "\n");
+                              }, true);
+    });
+
+    $( "#choose_run_inputs" ).click( function() {
+                open_chooser("Add input files"
+                             , function(file) {
+                              $( "#run_infiles" ).append(file + "\n");
+                              }, true);
+    });
+
+    $( "#choose_sweep_inputs" ).click( function() {
+                open_chooser("Add input files"
+                             , function(file) {
+                              $( "#sweep_infiles" ).append(file + "\n");
+                              }, true);
+    });
+
+    $( "#run_dialog" ).dialog(
+       // see http://jqueryui.com/docs/dialog/ for options
+        { autoOpen: false,
+           modal: true, closeOnEscape: true,
+           width: 500,
+           buttons: {
+           "Cancel": function() { $( "#run_dialog" ).dialog("close"); }
+           }
+    });
+    $( "#sweep_dialog" ).dialog(
+       // see http://jqueryui.com/docs/dialog/ for options
+        { autoOpen: false,
+           modal: true, closeOnEscape: true,
+           width: 650,
+           buttons: {
+           "Cancel": function() { $( "#sweep_dialog" ).dialog("close"); }
+           }
+    });
+  }
+
+// function to load js helpers and then initialise the page parts
+function init_page() {
+
+    // load the helper scripts
+    var script=document.createElement("script");
+    script.setAttribute("type","text/javascript");
+    script.setAttribute("src",
+        "/vgrid/" + the_vgrid + "/path/jquery.migtools.js");
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+    function andThen() { 
+        // initialisation code that depends on the scripts goes here.
+
+        // set/correct global variables:
+        app_list_body  = "#app_list_body";
+        out_list_body  = "#out_list_body";
+        compiled_dir   = the_vgrid + "/compiled/";
+        run_output_dir = the_vgrid + "/output/";
+
+	// Priorities can be mapped to different resource classes
+	// Add decreasing max time in minutes, corresponding to Q system
+	// Any job with CPUTIME > priority_classes[0] has lowest priority.
+	priority_classes.push(60)
+	// priority_classes.push(30);
+
+        init_dialogs();
+
+        // alert(todo);
+
+	// set up timer interval for refreshing the lists
+	toggle_refresh();
+
+    }
+
+    // and call continuation (browser dependent)
+    if ( script.readyState ) { // IE style browser
+        script.onreadystatechange = function() {
+            if (this.readyState=="loaded" || this.readyState=="complete") {
+                andThen();
+            }
+        };
+    } else { // other browser, should support onload
+        script.onload = andThen; 
+    }
+}
+
+$(document).ready( function() {
+    // find out where we are: grep vgrid name (vgrid_name=...) from url
+    var match = (location.search).match(new 
+                              RegExp(".*vgrid_name=([^&]*)(&.*)?")) 
+                || ["","",""];
+    if (match[1] == "" ) {
+       alert("Could not determine VGrid");
+    } else {
+        // cater for space in names (but currently does not work with MiG) 
+       the_vgrid = match[1].replace("%20"," ");
+    }
+
+
+    //  correct some instances where the VGrid appears
+    $( "#logoimage" ).attr("alt", the_vgrid );
+    $( ".navmenu  a" ).each( function() {
+             this.href = this.href.replace("__VGRID__",the_vgrid);
+    });
+
+    $( "#otherpart li" ).each( function() {
+             var tmp = $(this).html();
+             $(this).html(tmp.replace("__MATLAB_C__",matlab_c).replace("__MATLAB_E__",matlab_e));
+    });
+
+    // do sequenced initialisation (separate function)
+    init_page();
+
+});
+</script>
+
+</head>
+<body >
+<div id="topspace">
+</div>
+<div id="toplogo">
+<img src="logoimage.png" id="logoimage" alt=""/>
+<span id="logotitle">
+MatLab Grid Service Pages
+</span>
+</div>
+<div class="menublock">
+<div class="navmenu">
+ <ul>
+<!-- REPLACE: __VGRID__ => name of the VGrid -->
+   <li  class="resources"><a href="javascript:showAll();"  title="to top">Back to the Top</a></li>
+   <li  class="submitjob"><a href="javascript:noneExcept('compilepart')" title="Define a compilation job">Compile MatLab to Executable</a></li>
+   <li  class="jobs"><a href="javascript:noneExcept('runpart')"  title="Compiled MatLab applications">Compiled MatLab Application</a></li>
+   <li  class="files"><a href="javascript:noneExcept('outputpart')"  title="Output files">Output files from running  spplications</a></li>
+   <li  class="runtimeenvs"><a href="javascript:noneExcept('otherpart')"  title="Read other information">Information</a></li>
+<!--
+   <li  class="settings"><a href="fileman.py?path=private_base/__VGRID__/"  title="Direct access to files (File Manager)">View All Files directly</a></li>
+-->
+   <li class=""><!-- spacer -->&nbsp;</li>
+   <li  class="dashboard"><a href="dashboard.py"  title="Back to Grid middleware">Back to the Dashboard</a></li>
+
+   <li class=""><!-- spacer -->&nbsp;</li>
+   <li class="jobs"><a href="javascript:">
+   <input type="checkbox"  checked="true" 
+          id="refreshing" onclick="toggle_refresh()">
+   Automatic page refresh</a>
+   <li/>
+ </ul>
+</div>
+</div>
+
+<div class="contentblock">
+<div id="migheader">
+
+</div>
+<div id="content">
+<!-- START OF CONTENT -->
+
+<!-- JS wrapper to submit a compile job -->
+<!-- and catch errors due to missing jquery.migtools.js -->
+
+<div class="pagepart" id="compilepart">
+
+<h3>MatLab Compilation</h3>
+<form id="compileform" action="javascript:compile_submit();">
+<table ><tbody>
+<tr><td width="170px">
+Main MatLab File:</td>
+<td><input size="30" type="text" id="file_name" value="" /></td>
+<td>
+  Main MatLab file on the server 
+  (<a id="choose_instr">browse files</a> or
+  <a href="fileman.py" target="_blank">upload one</a>)
+</td></tr>
+<!-- for versioning, later
+<tr>
+<td>Runtime-Environment:</td>
+<td>
+<select id="matlab_c" name="re">
+<option selected value="MATLAB-COMPILE">MATLAB-COMPILER</option>
+<option value="Other">Other</option>
+<option value="">None</option>
+</select>
+</td>
+<td>In case several MCSTAS software variants (runtime env.s) are defined,
+    you can select the one to use for compilation here.
+</td></tr>
+<!--  -->
+<tr>
+<td>Other components<br> (MatLab or C files):</td>
+<td>
+<textarea cols="34" rows="4" id="other_names">
+</textarea>
+<td>
+  Other MatLab or C components to be used in the compilation.<br/>
+  Specify paths to (or <a id="choose_other">choose</a>) files 
+  in your home directory, each on a separate line.
+</td></tr>
+<tr>
+<td>Output name:</td>
+<td><input size="30" type="text" id="output_name" value="" /></td>
+<td>
+  Output name (Default: base name of main Matlab file)
+</td></tr>
+<tr>
+<td>Target Architecture:</td>
+<td><select id="target_arch" name="target_arch">
+<option selected value="X86">X86</option>
+<option value="AMD64">X86_64 (AMD)</option>
+<!-- We might add solaris here later -->
+</select></td>
+
+<td>Target architecture. This determines on which resource types
+     the resulting executable can be used later. Not all architectures
+     are supported.</td>
+
+</td></tr>
+<tr>
+<td/>
+<td><input type="submit" value="Compile to an Application" /></td>
+<td>Submit the compilation job
+</td></tr>
+</table>
+</form>
+
+  <h3>Compile Jobs submitted
+  <a style="font-size:xx-small" onclick="del('result')">Clear</a></h3>
+   See the <a href="jobman.py" target="_blank">Job monitor</a> 
+   page for previous jobs.<br/>
+   <div id="result"><!-- filled by js --></div>
+</div>
+
+<div class="pagepart" id="runpart">
+<h3>Existing Applications</h3>
+<div id="existing">
+<table id="app_list">
+<thead><th>Name<th>Source file (main)
+<th>Arch.
+<th>
+  <input type="submit" value="Refresh" onclick="list_refresh()">
+<th width="40%">Comments
+</thead>
+<tbody id="app_list_body">
+<tr>
+<td><td><td><td>
+<td style="font-size:xx-small">
+Existing app.s (filled by js from info files)
+</table>
+</div>
+  <h3>Run Jobs submitted
+  <a style="font-size:xx-small" onclick="del('run_result')">Clear</a></h3>
+   See the <a href="jobman.py" target="_blank">Job monitor</a>
+   page for previous jobs.<br/>
+   <div id="run_result"><!-- filled by js --></div>
+</div>
+
+<div class="pagepart" id="outputpart">
+<h3>Output files from previous run jobs</h3>
+<a onclick="$( '#out_list' ).toggleClass('hidden');out_refresh()">
+Click to show/hide files</a>
+<table id="out_list" class="hidden">
+<thead>
+<th>Executable Name<th>Job ID
+<th>
+  <input type="submit" value="Refresh" onclick="out_refresh()">
+<th width="40%">File
+</thead>
+<tbody id="out_list_body">
+<tr>
+<td>JOBNAME-JOBNAME<td>JOB_ID-JOB_ID-JOB_ID-JOB_ID
+<td><input type="submit" value="Delete" onclick="alert('DELETE')">
+<td style="font-size:xx-small">
+Existing output zip files (filled by js using ls).<br>
+And we can create dummy entries for queued jobs (get lost on reload).
+</table>
+</div>
+
+
+
+<!-- REPLACE: __MATLAB_*__ => name of respective RE, configured above -->
+<div class="pagepart" id="otherpart">
+<h3>Information</h3>
+
+  This is the Matlab Compilation Service VGrid page. All functionality
+  is accessible from here. Owners of this VGrid can compile Matlab
+  scripts to applicatons. Members can execute
+  applications. Prerequisite for all functionality is that resources
+  provide the Matlab compilation and the Matlab execution runtime
+  environments (see below).
+
+<h4>How to use the Matlab Compilation Service</h4>
+    <ul><li>Compiling Matlab scripts to a separate executable<p/>
+       Use the upper part of the page to define a compilation job.<br/>
+       A compilation job will compile a (main) Matlab function to an 
+       executable, which allows a user to call it as a stand-alone program.
+       If the script depends on other scripts, they can be specified as other 
+       components. Once compilation has finished, the compiled file will be 
+       available in the list of existing applications (click "refresh"!).<br/>
+       You have to specify for which architecture the script should be
+       compiled. Only resources with specified architecture, and providing 
+       the __MATLAB_C__ runtime environment, can compile the script.
+       Later, only resources with suitable architecture can execute
+       the resulting application, and executing resources must provide the
+       __MATLAB_E__ (Matlab execution) runtime environment, see below.
+       </li>
+        <li>Running a previously compiled Matlab script<p/>
+
+       After compiling a script, its resulting application can be
+       executed by clicking the respective "Submit Job" button in the
+       list of existing applications. In the popup window that is shown,
+       the user can provide arguments for the script.<br/>
+       Files produced by a job will be stored in a zip archive named after
+       the script name and the job id, in the user's home directory.<br/>
+
+       Submission results will be shown in the area below the table of
+       applications. For successfully submitted jobs, a link to the
+       job output will be added; error messages are shown if the
+       submission is unsuccessful.
+       </li>
+    </ul>
+<h4>How to provide Matlab functionality from a resource</h4>
+   <ul>
+   <li>Matlab Compilation<p/>
+
+     In order to provide compilation services, a full Matlab
+     installation on the resource is required, especially the Matlab
+     compiler. For the runtime environment __MATLAB_C__, an environment
+     variable MCC should contain the full path to the Matlab compiler.
+
+   </li>
+   <li>Matlab Execution<p/>     
+
+     For execution of precompiled Matlab scripts, a resource needs to
+     install the Matlab Compiler Runtime for the respective
+     architecture.  This runtime can be used and distributed without Matlab
+     license. Installer scripts for both X32 and AMD64 architectures can be
+     downloaded here.<br/>
+
+     <a href="MCRInstaller.X86.bin">MCRInstaller.X86.bin</a>&nbsp;&nbsp;
+     <a href="MCRInstaller.AMD64.bin">MCRInstaller.AMD64.bin</a><br/>
+
+     For the respective runtime environment, __MATLAB_E__, an
+     environment variable MCR should contain the full path to the
+     installed Matlab compiler runtime. That is, the path given at the
+     installation <em>and</em> the subdirectory indicating the version.
+   </li>
+</ul>
+
+</div>
+
+<!-- and now this... we do not want to see it, except in a dialog: -->
+  <div id="fm_filechooser" style="display:none">
+    <div class="fm_addressbar">
+      <ul><li class="fm_path"><input type="text" value="/" name="fm_current_path" readonly="readonly" /></li></ul>
+    </div>
+    <div class="fm_folders">
+      <ul class="jqueryFileTree">
+        <li class="directory expanded">
+          <a>...</a>
+        </li>
+      </ul>
+    </div>
+    <div class="fm_files">
+    
+      <table id="fm_filelisting" style="font-size:13px;" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th style="width: 80px;">Size</th>
+          <th style="width: 50px;">Type</th>
+          <th style="width: 120px;">Date Modified</th>
+        </tr>        
+      </thead>
+      <tbody>
+      <!-- this is a placeholder for contents: do not remove! -->
+      </tbody>
+      </table>            
+    
+    </div>        
+    <div class="fm_statusbar">&nbsp;</div>    
+  </div>
+  <ul id="folder_context" class="contextMenu" style="display:none">
+    <!-- select all contents? -->
+    <li class="select separator">
+      <a href="#select">Select</a>
+    </li>
+    <li class="rename">
+      <a href="#rename">Rename...</a>
+    </li>
+    <li class="mkdir">
+      <a href="#mkdir">Create Folder</a>
+    </li>
+    <li class="upload">
+      <a href="#upload">Upload File</a>
+    </li>
+  </ul>
+  <ul id="file_context" class="contextMenu" style="display:none">        
+    <li class="select separator">
+      <a href="#select">Select</a>
+    </li>
+    <li class="rename">
+      <a href="#rename">Rename...</a>
+    </li>
+  </ul>
+  <div id="cmd_dialog" title="Command output" style="display: none;"></div>
+
+  <div id="upload_dialog" title="Upload File" style="display: none;">
+  
+    <form id="upload_form" enctype="multipart/form-data" method="post" action="textarea.py">
+    <fieldset>
+      <input type="hidden" name="output_format" value="json"/>
+      <input type="hidden" name="max_file_size" value="100000"/>
+      
+      <label for="submitmrsl_0">Submit mRSL files (also .mRSL files included in packages):</label>
+      <input type="checkbox" checked="" name="submitmrsl_0"/>
+      <br />
+      
+      <label for="remotefilename_0">Optional remote filename (extra useful in windows):</label>
+      <input type="text" value="./" size="50" name="remotefilename_0" />
+      <br />
+      
+      <label for="extract_0">Extract package files (.zip, .tar.gz, .tar.bz2)</label>
+      <input type="checkbox" name="extract_0"/>
+      <br />
+      
+      <label for="fileupload_0_0_0">File:</label>
+      <input type="file" name="fileupload_0_0_0"/>
+
+    </fieldset>
+    </form>
+
+    <div id="upload_output"></div>
+
+  </div>
+      
+  <div id="mkdir_dialog" title="Create New Folder" style="display: none;">
+  
+    <form id="mkdir_form" action="mkdir.py">
+    <fieldset>
+      <input type="hidden" name="output_format" value="json" />
+      <input type="hidden" name="current_dir" value="./" />
+      <label for="path">Enter the new name:</label>
+      <input type="text" name="path"/>
+      
+    </fieldset>
+    </form>
+    <div id="mkdir_output"></div>
+  </div>
+  
+  <div id="rename_dialog" title="Rename" style="display: none;">
+  <form id="rename_form" action="mv.py">
+  <fieldset>
+  
+    <input type="hidden" name="output_format" value="json" />
+    <input type="hidden" name="flags" value="r" />
+    <input type="hidden" name="src" value="" />
+    <input type="hidden" name="dst" value="" />
+    
+    <label for="name">Enter the new name:</label>
+    <input type="text" name="name" value="" />
+    
+  </fieldset>
+  </form>
+  <div id="rename_output"></div>
+  </div>  
+
+  <!-- another dialog, for running compiled matlab with arguments -->
+  <div id="run_dialog" title="Run a Matlab job" 
+       style="background:#fff; display:none;">
+    <div id="run_text"><!-- filled by js --></div>
+    Arguments:
+    <input type="text" id="run_args" name="run_args" value="" />
+    <br/>
+    Expected maximum runtime:
+    <input type="text" id="run_limit" name="run_limit" size="4" value="" />
+    min.
+    <br/>
+    Input files (<a id="choose_run_inputs">choose</a>)<br/>
+    <textarea cols="34" rows="4" id="run_infiles"></textarea>
+  </div>
+
+  <!-- another dialog, for running compiled matlab with arguments -->
+  <div id="sweep_dialog" title="Run a parameter sweep" 
+       style="background:#fff; display:none;">
+    <div id="sweep_text"><!-- filled by js --></div>
+    <p style="font-size:smaller">
+    In the argument line below, you can freely mix normal arguments of 
+    any kind (quoted or without whitespace) with ranges of whole numbers
+    as described in the following.<br/>
+    A range of whole numbers is specified as a
+    starting value, optionally followed by comma and a next value
+    (default is start +- 1), and two dots followed by an end value,
+    enclosed in squared brackets and without any whitespace.<br/>
+    Examples: 
+    <span style="font-family:monospace">[2,4..12], [1..10], [-1,-3..-10]</span>
+    <br/>
+    The program will be run for every value in the range (cross product!).
+    The resulting runs can be executed in more than one Grid job to
+    parallelise them. However, each job will produce its own output archive.
+    </p>
+    Arguments: <input type="text" id="sweep_args" name="sweep_args" 
+                      size="50" value="" />
+    <br/>
+    Expected maximum runtime per call:
+    <input type="text" id="sweep_limit" 
+           name="sweep_limit" size="4" value="" />min.
+    <br/>
+    Number of parallel jobs: <input type="text" id="sweep_jobs" 
+                                    name="sweep_jobs" size="3" value="1" />
+    <br/>
+    Input files (<a id="choose_sweep_inputs">choose</a>)<br/>
+    <textarea cols="34" rows="4" id="sweep_infiles"></textarea>
+  </div>
+
+<!-- END OF CONTENT -->
+</div>
+</div>
+
+    <div id="exitcode">
+    </div>
+<br />    
+
+<div id="bottomlogo">
+<a onclick="alert(todo)">
+<img src="/images/copyright.png" id="creditsimage" alt=""/>
+<span id="credits">
+2010-11, <a href="http://www.grid.dk">MiG/grid.dk Project</a>
+</span>
+</a>
+</div>
+<div id="bottomspace">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+Grid.dk - Virtual Organizations from VOMS
+Using VOMS for all Grid.dk VO membership management
+Last updated %%date(%d-%m-%Y %H:%M)
+% End of the three default header lines
+%! Encoding: utf8
+%! Options : --toc --enum-title
+% End of the optional settings lines
+
+%
+% This is a txt2tags formatted document.
+% Generate HTML version by running:
+% txt2tags --toc -t html -o NAME.html NAME.t2t
+%
+% Generate LaTeX version by running:
+% txt2tags --toc -t tex -o NAME.tex NAME.t2t
+%
+% The Makefile wraps up generation including the two examples above
+% nicely. So just run: 
+% make NAME.{html,ps,pdf}
+
+
+%%toc
+
+= Introduction =
+In Grid.dk we want to use a single centralized database for Virtual
+Organization (VO) administration. As we already have in particular the
+DCSC members availablee in the Nordugrid VOMS system, we might as well
+use that as the central database for our portal. We need to have the
+VO database integrated with both of the grid middlewares, ARC and MiG.
+
+
+= Requirements =
+ARC is already integrated with VOMS, so that part requires no
+additional work from our side. MiG on the other hand handles VO's
+internally in the form of VGrids in addition to managing all users
+locally. As VGrids membership is handled as just a flat text file with
+certificate DN's it is not difficult to integarate by regularly dumping
+VOMS contents and syncronize with the VGrid membership files. VOMS
+provides an XML dump (SOAP) of all members, so a little parsing is
+necessary to get the plain text form.
+Users need to be locally defined before they can use the server
+and participate in VGrids. So we need to add any missing users from the
+VOMS-dump first.
+
+
+= Implementation =
+A new importusers script was added to the MiG middleware in
+mig/server/importusers.py. It takes a VOMS-dump URL as argument and adds
+any missing users to the local MiG server. It also allows one or more
+additional VGrid arguments, which directs the import script to add any
+new users to each of those VGrids. Thus we can simply call the
+importusers script with the URL of the DCSC VOMS membership dump and
+DCSC as the VGrid argument. That will add all missing users and send a
+DCSC VGrid membership request for each one. 
+The owner(s) of the DCSC VGrid will then receive the request by instant
+messenger or mail. This means that new users will get basic MiG access
+as soon as the import script runs next time, and full DCSC access
+through MiG as soon as one of the VGrid owners accept the request.
+As we did not want to add a SOAP dependency just to parse the relatively
+simple VOMS dump we simply made a simple parser to extract the entries.
+
+We also created a cron script to actually call the importusers script
+with the relevant parameters. This script was then inserted in
+/etc/cron.hourly on the portal server to automatically import any new
+users once an hour.
+
+As the VOMS-dump page requires authentication and authorization using a
+e.g. a Nordugrid key+certificate we have created such a pair, which can
+be used from cron i.e. without providing a passphrase.
+
+
+= Deployment =
+The cron job is in place and adding missing users. At one point we
+experienced problems because the VOMS-dump SOAP/XML format changed and
+broke our XML tag based parsing. Therefore we further simplified the
+parsing to grab anything that looks like a certificate DN instead of
+relying on an undocumented XML schema.

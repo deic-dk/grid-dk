@@ -1,0 +1,66 @@
+<project name="ConfucaSLCS" basedir="." default="main">
+
+    <property name="src.dir"     value="src"/>
+
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+
+    <property name="main-class"  value="ConfusaUI"/>
+	<property name="confusa-class"  value="ConfusaSLCSApp"/>
+	
+
+	<property name="lib.dir"     value="lib"/>
+
+	<property name="jar.file" 	 value="confusa.jar" />
+	<property name="signedjar.file" 	 value="sConfusa.jar" />
+		
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath">
+        <!--<compilerarg value="-Xlint"/>-->
+        </javac>
+    </target>
+
+     <target name="jar">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${jar.file}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="ConfusaUI"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java fork="true" classname="${main-class}" classpathref="classpath" classpath="${classes.dir}"/>
+    </target>
+
+    <target name="confusaSLCS">
+        <java fork="true" classname="${confusa-class}" classpathref="classpath" classpath="${classes.dir}"/>
+    </target>
+
+
+
+<target name="sign">
+  <input
+    message="Please enter key store pass:"
+    addproperty="store.pass"
+	/>
+	<signjar signedjar="${jar.dir}/${signedjar.file}"
+    	alias="my_home" keystore="grid.jks"
+    	storepass="${store.pass}"
+    	jar="${jar.dir}/${jar.file}"/>
+    	
+</target>
+
+
+</project>

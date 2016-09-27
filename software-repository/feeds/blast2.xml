@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/blast2.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>blast2</name>
+  <summary>Basic Local Alignment Search Tool</summary>
+  <description>The famous sequence alignment program. This is &quot;official&quot; NCBI version,
+#2. The blastall executable allows you to give a nucleotide or protein
+sequence to the program. It is compared against databases and a summary of
+matches is returned to the user.
+
+Note that databases are not included in Debian; they must be retrieved
+manually.</description>
+  <icon href="http://0install.net/feed_icons/Depend.png" type="image/png"/>
+  <binaries xmlns="http://portal.grid.dk/0install/namespace">
+    <binary name="bl2seq"/>
+    <binary name="blast2"/>
+    <binary name="blastall"/>
+    <binary name="blastall_old"/>
+    <binary name="blastcl3"/>
+    <binary name="blastclust"/>
+    <binary name="blastpgp"/>
+    <binary name="copymat"/>
+    <binary name="fastacmd"/>
+    <binary name="formatdb"/>
+    <binary name="formatrpsdb"/>
+    <binary name="impala"/>
+    <binary name="makemat"/>
+    <binary name="megablast"/>
+    <binary name="rpsblast"/>
+    <binary name="seedtop"/>
+  </binaries>
+  <group arch="Linux-x86_64" main="usr/bin/bl2seq">
+    <requires interface="http://portal.grid.dk/0install/libncbi6.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <requires interface="http://portal.grid.dk/0install/libncbi6.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <implementation id="sha1new=e563f86de8fcc9e8eacf7b5c695a6f220433bcbe" released="2010-02-23" version="1">
+      <archive href="http://ftp.debian.org/debian/pool/main/n/ncbi-tools6/blast2_2.2.18.20080302-4_amd64.deb" size="666308"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=8c601268e2a91f39e332548681c62aa1db46fe22" released="2010-02-23" version="1">
+      <archive href="http://ftp.debian.org/debian/pool/main/n/ncbi-tools6/blast2_2.2.18.20080302-4_i386.deb" size="637384"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7TUZ3W8lGjpY9URAngnAJ9LzzeyZRSjNfImKNFheZHhRenL9wCfZv8L8hL6bj4wGqwD
+4MZ8nksSD7Q=
+
+-->

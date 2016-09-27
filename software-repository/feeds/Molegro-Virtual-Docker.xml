@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/Molegro-Virtual-Docker.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>Molegro-Virtual-Docker</name>
+  <summary>An integrated platform for predicting protein - ligand interactions</summary>
+  <description>
+Molegro Virtual Docker is an integrated platform for predicting protein - ligand
+interactions. Molegro Virtual Docker handles all aspects of the docking process
+from preparation of the molecules to determination of the potential binding
+sites of the target protein, and prediction of the binding modes of the ligands.
+
+Molegro Virtual Docker offers high-quality docking based on a novel optimization
+technique combined with a user interface experience focusing on usability and
+productivity.</description>
+  <homepage>http://www.molegro.com/mvd-product.php</homepage>
+  <category>Education</category>
+  <icon href="http://0install.net/feed_icons/Load.png" type="image/png"/>
+  <!-- redundant, see main=.. below. 
+       But this makes the env. define the same var. as the older native one-->
+  <binaries xmlns="http://portal.grid.dk/0install/namespace">
+    <binary name="mvd"/>
+  </binaries>
+  <group doc-dir="MVD/help" license="Other/Proprietary License" main="MVD/bin/mvd" stability="stable">
+    <implementation arch="Linux-i686" id="sha1new=7685179e4dda9e6825422325d316e8a407ff8505" released="2010-01-07" version="4.0.0">
+      <archive extract="Molegro" href="http://portal.grid.dk/0install/MVD2010_4_0_0.tar.gz" size="31691646" type="application/x-compressed-tar"/>
+    </implementation>
+    <implementation arch="Linux-x86_64" id="sha1new=adb5d46c66f5960a9ebaeb72640502555446e5b4" released="2010-01-07" version="4.0.0">
+      <archive extract="Molegro" href="http://portal.grid.dk/0install/MVD2010_4_0_0_x64.tar.gz" size="32752567" type="application/x-compressed-tar"/>
+    </implementation>
+    <implementation arch="Linux-x86_64" id="sha1new=c86e754ae5573eca461ede8d04b8a40897d7be85" released="2009-06-04" version="3.2.1">
+      <archive extract="Molegro" href="http://portal.grid.dk/0install/MVD2008_3_2_1_x64.tar.gz" size="25643215" type="application/x-compressed-tar"/>
+    </implementation>
+    <implementation arch="Linux-i686" id="sha1new=f706521f5ecc248632f68f10e2c5846070d5d46c" released="2009-06-04" version="3.2.1">
+      <archive extract="Molegro" href="http://portal.grid.dk/0install/MVD2008_3_2_1.tar.gz" size="25390146" type="application/x-compressed-tar"/>
+  </implementation>
+  </group>
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VRZ3W8lGjpY9URArjwAJ49CJlJCq8uGh0BFOcwCps6pLO00QCePyVOW/meZ3xZ3F0f
+xrmoh+YbYyE=
+
+-->

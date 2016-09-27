@@ -1,0 +1,12 @@
+##############################################################################
+#NAMESPACES-VERSION: 1.0
+#
+# @(#)e2f9f5b3.namespaces
+# CA alias    : MiG
+#    subord_of: 
+#    subjectDN: /C=DK/ST=Denmark/O=Minimum intrusion Grid/OU=MiG Root CA/CN=Minimum intrusion Grid
+#    hash     : e2f9f5b3
+#
+TO Issuer "/C=DK/ST=Denmark/O=Minimum intrusion Grid/OU=MiG Root CA/CN=Minimum intrusion Grid" \
+  PERMIT Subject "/C=DK/.*"
+

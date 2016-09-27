@@ -1,0 +1,176 @@
+user-week
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+	    ds = doc.start_time.replace(/[TZ-]/g," ");
+	    d = new Date(Date.parse(ds));
+	    onejan = new Date(d.getFullYear(),0,1);
+	    w = Math.ceil((((d - onejan) / 86400000)
+	                + onejan.getDay()+1)/7);
+	    out.start = d.getFullYear() + ",week"
+	                + (w < 10?"0":"") + w;
+	    
+        }
+        return([doc.global_user_name, 
+                out.start]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+    emit(out.keyproject(),out.valproject());
+}
+machine-week
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        out.machine = "no machine";
+        if ("machine_name" in doc) {
+            out.machine = doc.machine_name;
+        }
+        if ("start_time" in doc) {
+	    ds = doc.start_time.replace(/[TZ-]/g," ");
+	    d = new Date(Date.parse(ds));
+	    onejan = new Date(d.getFullYear(),0,1);
+	    w = Math.ceil((((d - onejan) / 86400000)
+	                + onejan.getDay()+1)/7);
+	    out.start = d.getFullYear() + ",week"
+	                + (w < 10?"0":"") + w;
+        }
+        return([out.machine, out.start]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}
+summary-week
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+	    ds = doc.start_time.replace(/[TZ-]/g," ");
+	    d = new Date(Date.parse(ds));
+	    onejan = new Date(d.getFullYear(),0,1);
+	    w = Math.ceil((((d - onejan) / 86400000)
+	                + onejan.getDay()+1)/7);
+	    out.start = d.getFullYear() + ",week"
+	                + (w < 10?"0":"") + w;
+        }
+        return(['(Summary)', out.start]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}
+week-user
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+	    ds = doc.start_time.replace(/[TZ-]/g," ");
+	    d = new Date(Date.parse(ds));
+	    onejan = new Date(d.getFullYear(),0,1);
+	    w = Math.ceil((((d - onejan) / 86400000)
+	                + onejan.getDay()+1)/7);
+	    out.start = d.getFullYear() + ",week"
+	                + (w < 10?"0":"") + w;
+        }
+        return([out.start,doc.global_user_name]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+    emit(out.keyproject(),out.valproject());
+}
+week-machine
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        out.machine = "no machine";
+        if ("machine_name" in doc) {
+            out.machine = doc.machine_name;
+        }
+        if ("start_time" in doc) {
+	    ds = doc.start_time.replace(/[TZ-]/g," ");
+	    d = new Date(Date.parse(ds));
+	    onejan = new Date(d.getFullYear(),0,1);
+	    w = Math.ceil((((d - onejan) / 86400000)
+	                + onejan.getDay()+1)/7);
+	    out.start = d.getFullYear() + ",week"
+	                + (w < 10?"0":"") + w;
+        }
+        return([out.start,out.machine]);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}
+week-summary
+function(doc) {
+    out = {}
+    out.keyproject = function() {
+        out.start = "unknown";
+        if ("start_time" in doc) {
+	    ds = doc.start_time.replace(/[TZ-]/g," ");
+	    d = new Date(Date.parse(ds));
+	    onejan = new Date(d.getFullYear(),0,1);
+	    w = Math.ceil((((d - onejan) / 86400000)
+	                + onejan.getDay()+1)/7);
+	    out.start = d.getFullYear() + ",week"
+	                + (w < 10?"0":"") + w;
+        }
+        return([out.start,'(Summary)']);
+    };
+
+    out.valproject = function() {
+        result = {count:1, wall_duration:0, charge:0};
+        if ("wall_duration" in doc) {
+            result.wall_duration = doc.wall_duration;
+            result.charge = doc.charge;
+        }
+        return result;
+    };
+
+    emit(out.keyproject(),out.valproject());
+}

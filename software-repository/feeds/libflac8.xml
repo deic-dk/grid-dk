@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://portal.grid.dk/0install/libflac8.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>libflac8</name>
+  <summary>Free Lossless Audio Codec - runtime C library</summary>
+  <description>FLAC stands for Free Lossless Audio Codec. Grossly oversimplified, FLAC is
+similar to MP3, but lossless. The FLAC project consists of:
+
+ * The stream format
+ * libFLAC, which implements a reference encoder, stream decoder, and file
+   decoder
+ * flac, which is a command-line wrapper around libFLAC to encode and decode
+   .flac files
+ * Input plugins for various music players (Winamp, XMMS, and more in the
+   works)
+
+This package contains the runtime library libFLAC.</description>
+  <!-- no binaries here, library only -->
+  <group arch="Linux-x86_64">
+    <requires interface="http://portal.grid.dk/0install/libogg0.xml">
+      <environment insert="usr/lib" name="LD_LIBRARY_PATH"/>
+    </requires>
+    <implementation id="sha1new=10a5878b005f2dbba8adbd83f138acc6307cab89" released="2009-11-09" version="1.2.1-1.2">
+      <archive href="http://ftp.debian.org/debian/pool/main/f/flac/libflac8_1.2.1-1.2_amd64.deb" size="153710"/>
+    </implementation>
+    <implementation arch="Linux-i386" id="sha1new=ecac5581a8ab393da224fd5e87e6673bb59faa93" released="2009-11-09" version="1.2.1-1.2">
+      <archive href="http://ftp.debian.org/debian/pool/main/f/flac/libflac8_1.2.1-1.2_i386.deb" size="157592"/>
+    </implementation>
+  </group>
+
+</interface>
+<!-- Base64 Signature
+iD8DBQBL/7VHZ3W8lGjpY9URAnlEAJ983Zdo2UaDkRqg2EEUQVI2gJfx5ACg8eEBQYfa6pC7dtfZ
+1pcpRRk7k+Q=
+
+-->
