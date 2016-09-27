@@ -1,0 +1,21 @@
+
+::EXECUTE::
+python levenshtein.py block2.txt > block2_output.txt
+
+::INPUTFILES::
+block2.txt
+Levenshtein_ucs4.so
+Levenshtein_ucs2.so
+Levenshtein_i686.so
+Levenshtein_x86_64.so
+levenshtein.py
+
+::OUTPUTFILES::
+block2_output.txt
+ 
+::JOBTYPE::
+arc
+
+::VGRID::
+DCSC
+  

@@ -1,0 +1,200 @@
+id-0000002192-ref-0018 [Kl] A. Klumper, Investigation of excitation spectra of exactly solvable models using inver sion relations, Int. J. Mod. Phys. B 4 (1990), 871{893.
+id-0000351609-ref-0024 22. S-W. Kim, Phys. Rev. D. 53, 6889 (1996).
+id-0000621387-ref-0011 [12] A. Couairon, and J. M. Chomaz, Phys. Rev. Lett. 79, 2666 (1997).
+id-0000002192-ref-0019 [KoS] R. Kotecky and S. Shlosman, First-order phase transitions in large entropy lattice systems, Commun. Math. Phys. 83 (1982), 493-550.
+id-0000047927-ref-0018 Navarro, J.F. and Steinmetz, M., 2000, ApJ, 528, 607
+id-0000002192-ref-0020 [KSZ] A. Klumper, A. Schadschneider and J. Zittartz, Inversion relations, phase transitions and transfer matrix excitations for special spin models in two dimensions, Z. Phys. B 76 (1989), 247{258.
+id-0064979595-ref-0022 [18] S. S. Gousheh and H. R. Sepangi, K. Ghafoori-Tabrizi, Computer Physics Communications, 149 (2003), 135-141.
+id-0000002192-ref-0021 [LMR] L. Laanait, A. Messager and J. Ruiz, Phase coexistence and surface tensions for the Potts model, Commun. Math. Phys. 105 (1986), 527{545.
+id-0000047927-ref-0019 Ostriker J., Steinhart P.J., 1995, Nature, 377, 600
+id-0065046338-ref-0008 [9] A. Maas, A. Cucchieri, and T. Mendes, Braz. J. Phys. 37, 219 (2007), hep-lat/0610006.
+id-0000546807-ref-0041 e L. Feh´r and I. Marshall, Extensions of the matrix Gelfand-Dickey hierarchy from e generalized Drinfeld-Sokolov reduction, SWAT/95/61, hep-th/9503217
+id-0000546807-ref-0040 [33] L. Feh´r, J. Harnad and I. Marshall, Commun. Math. Phys. 154 (1993) 181
+id-0000546807-ref-0039 H. Aratyn, Integrable Lax Hierarchies, their Symmetry Reductions and Multimatrix Models, lectures at VIII J.A. Swieca Summer School (Rio de Janeiro, Brazil, 1995), hep-th/9503211.
+id-0000546807-ref-0038 [32] L.A. Dickey, On tau-functions of Zakharov-Shabat and other matrix hierarchies of integrable equations, hep-th/9502063
+id-0000546807-ref-0037 [31] D. Olive, private communication.
+id-0000546807-ref-0036 C.R. Fernńdez-Pousa, M.V. Gallas, T.J. Hollowood and J.L. Miramontes, The Sym a metric Space and Homogeneous sine-Gordon Theories, hep-th/9606032.
+id-0000546807-ref-0035 [30] T.J. Hollowood, J. Luis Miramontes and Q-Han Park, Nucl.Phys. B445 (1995) 451-468, hep-th/9412062
+id-0000546807-ref-0034 H. Aratyn, L.A. Ferreira, J.F. Gomes and A.H. Zimerman, Phys. Lett. B 254 (1991) 372.
+id-0000546807-ref-0033 [29] O. Babelon and L. Bonora, Phys. Lett. 244 B (1990) 220
+id-0000414733-ref-0012 Phys. Rev. D 46, 381 (1992).
+id-0000414733-ref-0011 [9] M. Peskin and T. Takeuchi, Phys. Rev. Lett. 65, 964 (1990)
+id-0000546807-ref-0032 [28] V.G. Kac and D.H. Peterson, 112 constructions of the basic representation of the loop - 26 - group of E8 , in "Symposium on Anomalies, Geometry and Topology" (W.A. Bardeen and A.R. White, eds.), World Scientific (1985) 276.
+id-0000414733-ref-0013 [10] C. S. Wood et al., Science 275, 1759 (1997).
+id-0000546807-ref-0024 [21] D. Olive and N. Turok, Nucl. Phys. B257 (1985) 277
+id-0000439989-ref-0002 [3] F.E. Close, Phys. Lett. B342 (1995) 369.
+id-0000546807-ref-0025 [22] D. Olive, N. Turok, Nucl. Phys. B265 [FS15] (1986) 469-484.
+id-0000546807-ref-0026 [23] O. Babelon and D. Bernard, Phys. Lett. B260 81
+id-0000439989-ref-0001 [2] P. Cho, M.B. Wise, CALT-68-1954, hep-ph/9410214.
+id-0000546807-ref-0027 Commun. Math. Phys. 149 (1992) 279-306, hep-th/9111036.
+id-0000439989-ref-0000 [1] M. Mangano, CDF Collaboration, 27th Int. Conf. on High Energy Physics, Glasgow, 20 - 27 July (1994).
+id-0000546807-ref-0028 [24] D. Olive, N. Turok and J.W.R. Underwood, Nucl. Phys. B401 (1993) 663-697.
+id-0000546807-ref-0029 [25] D. Olive, N. Turok and J.W.R. Underwood, Nucl. Phys. B409 (1993) 509-546, hep-th/9305160.
+id-0000546807-ref-0030 [26] D. Olive, M.V. Saveliev and J.W.R. Underwood, Phys. Lett. B311 (1993) 117-122, hep-th/9212123.
+id-0000546807-ref-0031 [27] O. Babelon and D. Bernard, Int. J. Mod. Phys. A8 (1993) 507-543, hep-th/9206002.
+id-0000414733-ref-0015 [12] M. J. D. Macpherson, K. P. Zetie, R. B. Warrington, D. N. Stacey, and J. P. Hoare, Phys. Rev. Lett. 67, 2784 (1991).
+id-0000414733-ref-0014 [11] S. C. Bennett and C. E. Wieman, Phys. Rev. Lett. 82, 2484 (1999).
+id-0000439989-ref-0003 [4] D.P. Roy, K. Sridhar, CERN-TH.7434/94, TIFR/TH/94-33, hep-ph/9409232.
+id-0000546807-ref-0023 [20] J.W.R. Underwood, Aspects of Non Abelian Toda Theories, hep-th/9304156.
+id-0000439989-ref-0004 [5] P. Cho, M.B. Wise, CALT-68-1962, hep-ph/9411303
+id-0000414733-ref-0016 [13] D. M. Meekhof, P. Vetter, P. K. Majumder, S. K. Lamoureaux, and E. N. Fortson, Phys. Rev. Lett. 71, 3442 (1993).
+id-0007799406-ref-0007 Burud, I., Fruchter, A.S., Rhoads, J.E., & Levan, A. 2002, GCN Circ. #1536
+id-0007799406-ref-0006 Bloom, J.S., Fox, D.W., & Hunt, M.P. 2002b, GCN Circ. #1476
+id-0000485640-ref-0016 [13] I. E. Stockdale et al., Phys. Rev. Lett. 52 (1984) 1384.
+id-0000644633-ref-0000 1. N.P.Landsman, Phys.Rev.Lett. 60 (1988) 1990 and Ann.Phys. 186 (1988) 141
+id-0065090246-ref-0016 can use tabulated enthalpy and entropy values at stan dard pressure p0 = 1 atm to determine ∆µO (T, p0 )18 . For an oxygen gas phase, both approaches yield virtu ally identical results in the range of temperatures and
+id-0000485640-ref-0014 [11] B. Achkare et al., Nucl. Phys. B434 (1995) 503.
+id-0065090246-ref-0014 where kB is the Boltzmann constant, and ∆µO contains now all temperature and pressure dependent free energy
+id-0065090246-ref-0015 contributions of the O2 molecule internal degrees of free dom. ∆µO (T, pO2 ) can be obtained can be obtained within the ideal gas approximation, or alternatively, one
+id-0000644633-ref-0002 3. J.Schwinger, J.Math.Phys. 2 (1961) 407
+id-0000485640-ref-0015 [12] F. Dydak et al., Phys. Lett. B134 (1984) 281.
+id-0000644633-ref-0001 2. H.Umezawa, Advanced field Theory:Micro, Macro and Thermal Physics (American Institute of Physics, 1993)
+id-0000644633-ref-0004 4. R.Littlejohn, Phys.Rep. 138 (1986) 193
+id-0000644633-ref-0005 5. P.A.Henning, M.Graf and F. Matthäus, Physica A 182 (1992) 489
+id-0000644633-ref-0003 L.V.Keldysh, Zh.Exsp.Teor.fiz. 47 (1964) 1515 and JETP 20 (1965) 1018
+id-0000002207-ref-0020 [20] H. Sakaguchi, Cooperative phenomena in coupled oscillator systems under external elds, Prog. Theor. Phys. 79 (1988) 39-46.
+id-0000002207-ref-0011 [12] J.D. Crawford, Universal trapping scaling on the unstable manifold of a collisionless electrostatic mode, Phys. Rev. Lett. 73 (1994) 656-659.
+id-0000459511-ref-0012 [10] A.A. Andrianov and V.A. Andrianov, Int. J. Mod. Phys. A 8 (1993) 1981
+id-0000459511-ref-0013 Nucl. Phys. B (Proc. Suppl.) 39 B, C (1993) 257.
+id-0000459511-ref-0014 [11] Yu.L. Kalinovsky, L. Kaschluhn and V.N. Pervushin, Phys. Lett. B 231 (1989) 288.
+id-0000459511-ref-0015 [12] M.K. Volkov and Ch. Weiss, Bochum Univ. preprint RUB-TPII-12/96 (1996); hepph/9608347
+id-0000002207-ref-0012 [13] J.D. Crawford, Amplitude equations for electrostatic waves: universal singular behavior in the limit of weak instability, Phys. Plasmas, to appear (1995).
+id-0000459511-ref-0016 To be publeshed in Phys. Rev. D.
+id-0000002207-ref-0013 [14] K. Case, Stability of inviscid plane Couette ow, Phys. Fl. 3 143 (1960).
+id-0000459511-ref-0017 [13] R.P. Feynman, M. Kislinger and F. Ravndal, Phys. Rev. D 3 (1971) 2706.
+id-0000002207-ref-0014 [15] R.J. Briggs, J.D. Daugherty, and R.H. Levy, Role of Landau damping in crossedeld electron beams and inviscid shear ow, Phys. Fl. 13 421-432 (1970).
+id-0000459511-ref-0018 [14] S.B. Gerasimov and A.B. Govorkov, Z. Phys. C 29 (1985) 61
+id-0000002207-ref-0015 [16] S.M. Churilov and I.G. Shukhman, Nonlinear stability of a strati ed shear ow in the regime with an unsteady critical layer, J. Fluid Mech. 194 187-216 (1988).
+id-0000459511-ref-0019 A.B. Govorkov, Yad. Fiz. 55 (1992) 1035
+id-0000002207-ref-0016 [17] R. Pego and M.I. Weinstein, Phil. Trans. R. Soc. Lond. A 340 (1992) 47-94
+id-0000002207-ref-0017 also in Di erential Equations with Applications to Mathematical Physics, W.F. Ames, E.M. Harrel, and J.V. Herod, eds., Academic Press, Orlando, 1993.
+id-0000459511-ref-0021 S.B. Gerasimov and A.B. Govorkov, JINR preprint P2-86-758, (1986).
+id-0000459511-ref-0022 [15] D. Ebert, Yu.L. Kalinovsky, L. M¨ nchow and M.K. Volkov, Int. J. Mod. Phys. A 8 (1993) u 1295.
+id-0000002207-ref-0018 [18] R. Pego, P. Smereka, and M.I. Weinstein, Oscillatory instability of solitary waves in a continuum model of lattice vibrations, Nonlinearity, submitted, (1994).
+id-0000002207-ref-0019 [19] G. Russo and P. Smereka, Kinetic theory for bubbly ow I: collisionless case, SIAM J. Appl. Math., submitted, (1994).
+id-0000186493-ref-0031 shape and polydispersity. Preliminary MD results on
+id-0000186493-ref-0032 dense random packings of monodisperse spheres in 3D yielded L´vy-distributed large strain steps with a value e
+id-0000186493-ref-0033 of µ in the 0.4-0.6 range. Physically, large strain increments are due to rearrangements involving many contact changes (steps 2 and
+id-0000268964-ref-0022 [23] R. Lipowsky and M. E. Fisher, Phys. Rev. B 56, 2126 (1987).
+id-0000258067-ref-0006 T. Xiang and J. Wheatley, preprint (1995).
+id-0000258067-ref-0007 [6] G. Xiao et al., Phys. Rev. B 42, 8752 (1990).
+id-0000437403-ref-0011 [9] J.L. Hewett, SLAC-PUB-6521 (1994).
+id-0000437403-ref-0012 [10] B. Barish, et. al., CLEO Collaboration, CLEO CONF 94-1.
+id-0000258067-ref-0008 [7] D. Achkir et al., Phys. Rev. B 48, 13184 (1990).
+id-0000437403-ref-0013 [11] A. Manohar and H. Georgi, Nucl. Phys. B234 189 (1984)
+id-0000258067-ref-0009 [8] E. R. Ulm et al., Phys. Rev. B 51, 9193 (1995).
+id-0000258067-ref-0010 [9] A. A. Abrikosov and L. P. Gor′ kov, Zh. Eksp. Teor. Fiz. 39, 1781 (1960) [Sov. Phys. JETP 12, 1243 (1961)].
+id-0000046887-ref-0001 M. Guainazzi, A. Parmar, and T. Oosterbroek, Astron. Astrophys. 349, 819 (1999)
+id-0000046887-ref-0000 H. V. Bradt, R. E. Rothschild, and J. H. Swank, Astron. Astrophys., Suppl. Ser. 97, 355 (1993)
+id-0000437403-ref-0014 H. Georgi and L. Randall, Nucl. Phys. B276 241 (1986)
+id-0000258067-ref-0011 [10] A. Mahajan et al., Phys. Rev. Lett. 72, 3100 (1994).
+id-0000258067-ref-0012 [11] R. E. Walstedt et al., Phys. Rev. B 48, 10646 (1993).
+id-0000258067-ref-0013 [12] P. J. Hirschfeld and N. Goldenfeld, Phys. Rev. B 48, 4219 (1993).
+id-0000046887-ref-0002 P. Hut, S. McMillan, J. Goodman, et al., Publ. Astron. Soc. Pac. 104, 681 (1992)
+id-0000046887-ref-0003 H. Inoue, K. Koyama, K. Makishima, et al., Astrophys. J. 250, L7 (1981)
+id-0000046887-ref-0004 H. M. Johnston, F. Verbunt, and G. Hasinger, Astron. Astrophys. 298, L21 (1995)
+id-0000186493-ref-0029 els were sometimes reported for soil materials or glass
+id-0000268964-ref-0023 [24] J. J. Sakurai, Modern Quantum Mechanics (AddisonWesley, Reading, Massachusetts, 1994), p72.
+id-0000046887-ref-0006 M. N. Pavlinsky, S. A. Grebenev, A. A. Lutovinov, et al., Astron. Lett. 27, 297 (2001)
+id-0000046887-ref-0005 K. Makishima, T. Ohashi, H. Inoue, et al., Astrophys. J. 247, L23 (1981)
+id-0000002213-ref-0003 A. Mehta (ed.) Granular Matter, (Springer, New York, 1993).
+id-0000002213-ref-0002 D. Bideau and A. Hansen (eds.), Disorder and Granular Media, (North-Holland, Amsterdam, 1993); C. Thornton (ed.), Powders and Grains 93, (Balkema, Rotterdam, 1993)
+id-0000002213-ref-0006 M. Nakagawa, Chem. Eng. Sci. 49 2540 (1994)
+id-0000002213-ref-0004 [2] J.B. Knight, H.M. Jaeger, and S.R.Nagel, Phys. Rev. Lett., 70 3728 (1993)
+id-0000002213-ref-0005 J. Duran, T. Mazozi, E. Clement, and J. Rajchenbach, to be published in Phys. Rev. E; R. Jullien, P. Meakin, and A. Pavlovitch, Phys. Rev. Lett. 69 640 (1992)
+id-0000002213-ref-0007 O. Zik, D. Levine, S. G. Lipson, S. Shtrikman, and J. Stavans, Phys. Rev. Lett. 73 644 (1994).
+id-0000002213-ref-0008 [3] H. K. Pak and R. P. Behringer, Phys. Rev. Lett. 71 1832 (1993)
+id-0000002213-ref-0009 F. Melo, P. Umban hower, and H.L.Swinney, Phys. Rev. Lett. 72 172 (1994).
+id-0000002213-ref-0010 [4] H.K Pak, P.R. Behringer, Nature 371 231 (1994)
+id-0000002213-ref-0011 S.Sasa and H.Hayakawa:Euro phys.Lett. 17 (1992)685
+id-0000002213-ref-0012 T.S. Komatsu and H. Hayakawa, Phys. Lett. A 183 56 (1993).
+id-0000002213-ref-0013 [5] T. Poschel, J. Phys. I 4 499 (1994)
+id-0000002213-ref-0014 G. Peng, and H.J.Herrmann, Phys. Rev. E 49 R1796 (1994)
+id-0000271438-ref-0008 [8] For a review, J.Solyom, Adv.Phys.28(1979)201.
+id-0000271438-ref-0009 [9] For a review, H.Fukuyama and H.Takayama, Electronic Properties of Inorganic Quasi One-Dimensional Compounds Part 1 ed. by P.Monceau Reidel Pub.Comp,1985 P.41.
+id-0000002213-ref-0026 to be published in Physica D (chao-dyn/9405003).
+id-0000271438-ref-0010 [10] V.J.Emery, Phys.Rev.Lett.65(1990)1076.
+id-0000002213-ref-0027 [10] D.C. Hong, S. Yue, J.K. Rudra, M.Y. Choi and Y.W. Kim, Phys. Rev. E 50 4123 (1994)
+id-0000271438-ref-0011 [11] H.J.Schulz, Phys.Rev.Lett.64(1990)2831.
+id-0000002213-ref-0028 J. Lee, and M. Leibig, J. Phys. (Paris) I 4 507 (1994).
+id-0000271438-ref-0012 [12] For a review, A.Georges, G.Kotliar, W.Krauth and M.J.Rozenberg, Rev.Mod.Phys.68(1996)13
+id-0000002213-ref-0029 [11] C. S. Campbell, Annu. Rev. Fluid Mech. 22 57 (1990)
+id-0034928660-ref-0007 [8] C. Knetter and G. S. Uhrig, Eur. Phys. J. B 13, 209 (2000).
+id-0034928660-ref-0008 [9] F. J. Wegner, Ann. Physik 3, 77 (1994).
+id-0034928660-ref-0009 [10] J. Stein, J. Stat. Phys. 88, 487 (1997).
+id-0034928660-ref-0010 [11] A. Mielke, Eur. Phys. J. B 5, 605 (1998).
+id-0034928660-ref-0011 [12] S. K. Kehrein and A. Mielke, Ann. Physik 6, 90 (1997).
+id-0034928660-ref-0012 [13] C. Knetter, K. P. Schmidt, M. Gr¨ninger, and G. S. u Uhrig, Phys. Rev. Lett. 87, 167204 (2001).
+id-0034928660-ref-0013 [14] K. P. Schmidt, C. Knetter, and G. S. Uhrig, Europhys. Lett. 56, 877 (2001).
+id-0034928660-ref-0014 [15] W. Zheng et al., Phys. Rev. B 63, 144410 (2001).
+id-0034928660-ref-0015 [16] Another way to deal with the ambiguity would be to introduce a certain ordering among the indices. Then only one representative of the two (or more) identical states needs to be kept [3,13].
+id-0034928660-ref-0016 [17] M. P. Gelfand, R. R. P. Singh, and D. A. Huse, J. Stat. Phys. 59, 1093 (1990).
+id-0000458180-ref-0009 [9] S.V.Chekanov, Proc. of the Int. Workshop "Quantum Systems: New Trends and Methods", Minsk, Belarus 1994, edit: A.O.Barut et al. (World Scientific, Singa pore, 1995) p.367
+id-0000002222-ref-0068 62. D. Gabor, Progress in Optics 1, 111 (1964), reprinted in Ref. 50.
+id-0000540183-ref-0064 48. J. Baez and W. Taylor, "Strings and Two-Dimensional QCD for Finite N," MIT preprint (January 1994), hep-th/9401041
+id-0000269706-ref-0006 [7] T.R. Kirkpatrick, D. Thirumalai, Phis. Rev. B 36 (1987), 5388.
+id-0000002222-ref-0067 61. H.S. Leff, Am. J. Phys. 58, 135 (1990).
+id-0000269706-ref-0005 [6] E. Gardner, Nucl. Phys. B 257 (1985), 747.
+id-0000458180-ref-0008 [8] S.V.Chekanov, Acta Phys. Pol. B25 (1994) 1583
+id-0000540183-ref-0063 47. B. Zwiebach, "Closed String Field Theory: Quantum Action and the B-V Master Equation, Nucl. Phys. B390 (1993) 33
+id-0000269706-ref-0004 [5] D.J. Gross, M. Mźard, Nucl. Phys. B 240 (1984), 431. e
+id-0000002222-ref-0066 60. C.M. Caves, W.G. Unruh, and W.H. Zurek, Phys. Rev. Lett. 65, 1387 (1990).
+id-0000458180-ref-0007 [7] R.Peschanski, Nucl. Phys. B327 (1989) 144
+id-0000540183-ref-0062 HEP-95-18 (March 1995), hep-th/9503124
+id-0000458180-ref-0000 [1] A.Bialas and R.Peschanski, Nucl. Phys. B273 (1986) 703
+id-0000458180-ref-0001 [2] A. Bialas, Nucl. Phys. A525 (1991) 345
+id-0000002222-ref-0065 59. J. Berger, Int. J. Theor. Phys. 29, 985 (1990).
+id-0000540183-ref-0061 46. C.N. Hull and P. Townsend, "Unity of String Dualities," QMW preprint (October 1994), hep-th/9410167 E. Witten, "String Theory Dynamics in Various Dimensions," IAS preprint IASSNS-
+id-0000002222-ref-0064 58. C.H. Bennett, Scientific American 257, 88 (November 1987).
+id-0000540183-ref-0060 45. S.C. Naculich, H.A. Riggs and H.J. Schnitzer, "Group-Level Duality in WZW Models and Chern-Simons Theory," Phys. Lett. B246 (1990) 417
+id-0000002222-ref-0063 57. L. Szilard, Z. Phys. 53, 840 (1929), translated in Ref. 1.
+id-0000540183-ref-0059 44. M. Douglas, "Conformal Field Theory Techniques for Large N Group Theory," hep th/9303159 R. Rudd, The String Partition Function for QCD on the Torus," hep-th/9407176
+id-0000002222-ref-0062 56. H. Aspden, Nature 347, 24 (1990).
+id-0000438021-ref-0035 [22] J. Soffer, Lectures in the RCNP-Kikuchi School on Spin Physics at Intermediate Energies, 1992, Osaka, CPT-92/P.2816.
+id-0000438021-ref-0034 [21] T. Morii, S. Tanaka and T. Yamanishi, Phys. Lett. B322, 253 (1994).
+id-0000002222-ref-0061 55. J. Berger, Solid State Com. 53, 387 (1985).
+id-0000438021-ref-0033 K. Sridhar and E. Leader, Phys. Lett. B295, 283 (1992).
+id-0000002222-ref-0060 54. H.P. Steinr¨ ck, K.D. Rendulic and A. Winkler, Surface Science 154, u 99 (1985).
+id-0000438021-ref-0032 R. M. Godbole, S. Gupta and K. Sridhar, Phys. Lett. B255, 120 (1991)
+id-0000002222-ref-0059 53. J. Berger, Am. J. Phys. 53, 899 (1985).
+id-0000438021-ref-0031 [20] J. Ph. Guillet, Z. Phys. C39, 75 (1988)
+id-0000438021-ref-0030 K. Kobayakawa, T. Morii and T. Yamanishi, Z. Phys. C59 (1993) 251.
+id-0000540183-ref-0057 "Two Dimensional Gravity and Intersection Theory on Moduli Space," Surv. Diff. Geom. 1 (1991) 243
+id-0000438021-ref-0029 W. Vogelsang and A. Weber, Phys. Rev. D45, 4069 (1992)
+id-0000002222-ref-0058 J. Berger, J. Vac. Sci. Technol. A 5, 382 (1987).
+id-0000438021-ref-0028 [19] G. Ramsey and D. Sivers, Phys. Rev. D43, 2861 (1991)
+id-0000438021-ref-0027 [18] D. L. Adams et al., FNAL E581/704 Collab., Phys. Lett. B261, 197 (1991).
+id-0000540183-ref-0056 42. E. Witten, "On the Structure of the Topological Phase of Two-Dimensional Gravity," Nucl. Phys. B340 (1990) 281
+id-0000002222-ref-0057 Phys. Lett. A n 122, 295 (1987)
+id-0000438021-ref-0026 M. Glück, E. Reya and W. Vogelsang, Phys. Rev. D45 (1992) 2552.
+id-0000438021-ref-0025 H. Y. Cheng and S. N. Lai, Phys. Rev. D41 (1990) 91
+id-0000438021-ref-0024 [17] Z. Kunszt, Phys. Lett. B218 (1989) 243
+id-0000438021-ref-0023 [16] S. J. Brodsky, M. Burkardt and I. Schmidt, "Perturbative QCD Constraints on the Shape of Polarized Quark and Gluon Distributions", preprint 6087 (1994).
+id-0000438021-ref-0019 [12] D. W. Duke and J. F. Owens, Phys. Rev. D30, 49 (1984).
+id-0000438021-ref-0020 [13] T. Morii, S. Tanaka and T. Yamanishi, "The shape of polarized gluon distributions", KOBE-FHD-94-08, (1994).
+id-0000002222-ref-0056 52. A. Horode´ ski, J. Vac. Sci. Technol. A 3, 39 (1985)
+id-0000438021-ref-0021 [14] B. Adeva et al., SMC Collab., Phys. Lett. B302, 533 (1993).
+id-0000438021-ref-0022 [15] H. Y. Cheng and S. N. Lai, Phys. Rev. D41, 91 (1990).
+id-0064835652-ref-0001 E. Maina, S. Moretti, M.R. Nolten and D.A. Ross, Phys. Lett. B 570 205 (2003)
+id-0064839516-ref-0008 [] Yu-xi Liu, J. Q. You, L. F. Wei, C. P. Sun, and F. Nori, Phys. Rev. Lett. 95, 087001 (2005).
+id-0000712349-ref-0180 [155] Gou, S.-C., Steinbach, J., and Knight, P. L., 1996, Phys. Rev. A, 54, 4315
+id-0064839516-ref-0007 R. Unanyan, L. P. Yatsenko, K. Bergmann, and B. W. Shore, Opt. Comm. 139, 49 (1997).
+id-0000002224-ref-0003 [3] M. Fukui and Y. Ishibashi: J. Phys. Soc. Jpn. 62 (1993) 3841.
+id-0000084839-ref-0003 [4] L.P. Grishchuk, Annals of the New York Academy of Sciences, vol.302, 439 (1977).
+id-0000002224-ref-0002 J. Phys. A 26 (1993) 6625.
+id-0000002224-ref-0001 [2] T. Nagatani:J. Phys. Soc. Jpn. 62 (1993) 3837
+id-0000084839-ref-0002 [3] K.S. Thorne, in Recent Advances in General Relativity, A. Janis and J. Porter, Eds.(Birkhauser, Boston, 1992.)
+id-0000084839-ref-0001 [2] K.S. Thorne, Science 256, 325 (1992).
+id-0000002224-ref-0000 [1] K. Nagel and M. Schreckenberg: J. Phys. I France 2 (1992) 2221.
+id-0000084839-ref-0000 [1] K.S. Thorne, in 300 Years of Gravitation, S.W. Hawking and W. Israel, Eds.(Cambridge University Press, Cambridge, 1987.)
+id-0000430851-ref-0006 [5] F. Hussain, J. G. K¨rner and G. Thompson, "Hadrons of arbitrary spin and o heavy quark symmetry", Mainz Preprint MZ-TH/93-23 (1993);
+id-0052842459-ref-0004 [5] T. Kohonen, Self-Organizing Map, 2nd ed., Springer-Verlag, Berlin, 1995.
+id-0064897605-ref-0026 [27] L. Taillefer and G. Lonzarich, Phys. Rev. Lett. 60 (1988) 1570.
+id-0058804391-ref-0005 Klein, R.I., McKee, C.F., Colella, P. 1994, ApJ 420, 213.
+id-0000181739-ref-0021 4P12 is antifer-romagnetic ~AF! with a Neél temperature of T
+id-0000432907-ref-0008 [8] H.J. Weber, Ann. Phys. (N.Y) 177 (1987) 38
+id-0000180495-ref-0005 [6] J. E. Hopcroft and J. D. Ullman. Introduction to Automata Theory, Languages, and Computation. Addison-Wesley, 1979.
+id-0000432907-ref-0012 [10] P. Kroll, M. Sch¨ rmann and W. Schweiger, Proceedings of the Workshop on Quark u Cluster Dynamics, Bad Honnef (1992), eds. K. Goeke, P. Kroll and H. Petry, Springer Lecture Notes in Physics, Vol. 417, Heidelberg (1993)
+id-0000443291-ref-0018 [13] A. Sirlin, Nucl. Phys. B196 (1982) 83.
+id-0000443291-ref-0019 [14] T. Kinoshita, Phys. Rev. Lett. 2 (1959) 477.
+id-0064786204-ref-0015 338; I.M. Narodetskii, M.A. Trusov, Phys. Atom. Nucl. 67, (2004) 762. 24. I.M. Narodetskii, A.N. Plekhanov, and A.I. Veselov, JETP Lett. 77, (2003) 58. 25. P. Nunberg, D. Prosperi, and E. Pace, Nucl.
