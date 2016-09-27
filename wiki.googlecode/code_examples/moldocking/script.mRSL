@@ -1,0 +1,16 @@
+::EXECUTE::
+$MVD script.mvdscript -nogui -licensdir .
+tar -cf output.tar *.*
+
+::INPUTFILES::
+target.mvdml
+compunds.mol2
+script.mvdscript
+license_file.license
+
+::OUTPUTFILES::
+output.tar
+
+::RUNTIMEENVIRONMENT::
+MOLEGRO-1.0
+  

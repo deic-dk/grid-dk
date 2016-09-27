@@ -1,0 +1,200 @@
+id-0000001942-ref-0003 4. H. Bruck, Circular particle accelerators, (1965), English translation Los Alamos Re port, LA-TR-72-10 Rev.
+id-0065007342-ref-0027 [28] P. Astier et al., Astron. and Astroph. 447, 31 (2006), [Supernova Legacy Survey SNLS].
+id-0000001832-ref-0012 [10] S. Habib and R. D. Ryne, (in preparation). [11] A. J. Dragt and E. Forest, J. Math. Phys. 24, 2734 (1983). [12] See, e.g., R. L. Gluckstern, Phys. Rev. Lett. (in press)
+id-0000001832-ref-0011 [9] S. Habib and R. D. Ryne, Phys. Rev. Lett. (in press).
+id-0000001832-ref-0010 J. Wisdom and M. Holman, Astron. J. 102, 1528 (1991).
+id-0035662184-ref-0044 [15] D. S. P. Dearborn, D. N. Schramm and G. Steigman, Phys. Rev. Lett. 56, 26 (1986)
+id-0000618700-ref-0001 K. Karch et al., Phys. Rev. B 50, 17054 (1994)
+id-0065019401-ref-0016 [16] V.V. Bazhanov, S.L. Lukyanov and A.B. Zamolodchikov, Nucl. Phys. B549 [FS], 529 (1999)
+id-0000535584-ref-0006 [5] M. A. Tavel, Transport Theory and Statistical Physics 1(3), 1971, 183-207. This is an English translation of Ref. [2].
+id-0051863513-ref-0051 [31] G. Bozzi, S. Catani, D. de florian and M. Grazzini, Phys. Lett. B 564 (2003) 65.
+id-0000338728-ref-0009 Henneaux, M., Teitelboim, C. (1992). Quantizations of Gauge Systems. Princeton University Press, Princeton, New Jersey.
+id-0015001430-ref-0057 [] J. Boguta and A. R. Bodmer, Nucl. Phys. A 292, 413 (1977)
+id-0065007342-ref-0030 [31] L. Maor, R. Brustein, and P. Steinhardt, Phys. Rev. Lett. (2001).
+id-0000010631-ref-0078 Hirayama, K. 1918, AJ, 31, 185
+id-0000010631-ref-0079 Holland, W. S., Greaves, J. S., Zuckerman, B., Webb, R. A., McCarthy, C., Coulson, I. M., Walther, D. M., Dent, W. R. F., Gear, W. K. and Robson, I. 1998, Nature, 392, 788
+id-0000001944-ref-0005 6. A. Schoch, Theory of linear and non-linear perturbations of betatron oscilla tions in an alternating gradient synchrotron, CERN 57-21 (1957).
+id-0000001944-ref-0011 12. G. Guignard, A general treatment of resonances in accelerators, CERN 78-11 (1978).
+id-0000001944-ref-0012 13. H. Wiedenmann, Particle Accelerator Physics II, Springer–Verlag, New York (1995).
+id-0000010526-ref-0014 Jing,Y.P., 1998, ApJ, 503, L9
+id-0000010586-ref-0009 Koo, B. -C. 1999, ApJ, 518, 760
+id-0064773381-ref-0026 FM4 [] C.-K. Peng, S. Havlin, M. Schwartz and H. E. Stanley, Phys. Rev. A 44, 2239 (1991) .
+id-0000010528-ref-0003 Bondi H. 1952, MNRAS, 112, 195
+id-0000010528-ref-0002 Binney J., Tremaine S. 1987, Galactic Dynamics (Princeton University Press, Princeton), 492
+id-0000010528-ref-0001 Begelman M.C., Rees M.J. 1978, MNRAS, 185, 847
+id-0000010528-ref-0000 Blitz L. 1993, in Protostars and Planets III, ed E.H. Levy, J.I. Lunine (The University of Arizona Press, Tucson), p125
+id-0000010609-ref-0005 Condon, J. J. 1983, ApJS, 53, 459
+id-0064849127-ref-0015 [] Caurier, E., Nowacki, F. and Poves, A., Nucl. Phys. A 742, 14 (2004).
+id-0000010609-ref-0004 Collison, P. M., Saikia, D. J., Pedlar, A., Axon, D. J. and Unger, S. W. 1994, MNRAS, 268, 203
+id-0000010609-ref-0003 Clark, B. G., 1980, A and A, 89, 377
+id-0000010622-ref-0092 Gratton, R.G., Sneden, C. 1987, A&A, 178, 179
+id-0000010622-ref-0093 Gratton, R.G., Sneden, C. 1988, A&A, 204, 193
+id-0000010622-ref-0094 Gratton, R.G., Sneden, C. 1991, A&A, 241, 501
+id-0000010622-ref-0095 Gratton, R.G., Sneden, C. 1994, A&A, 287, 927
+id-0000010622-ref-0096 Gratton, R.G. Carretta, E., Castelli, F. 1996a, A&A, 314, 191 (Paper I)
+id-0000010631-ref-0082 Jayaraman, S. and Dermott, S. F. submitted, Icarus, 2000
+id-0000010631-ref-0081 Jackson, A. A. and Zook, H. A. 1989, Nature, 337, 629
+id-0000010631-ref-0080 Ishiguro, M. 1999, December 8, Zodiacal Light, http://zodi.planet.sci.kobe-u.ac.jp/ishiguro
+id-0000131354-ref-0016 from BeppoSAX and Rossi-XTE, Rome, October 1997. Nu clear Physics B Proceedings Supplements (in press), astro ph/9712274
+id-0000001958-ref-0038 B. Bayanov, J. Petrov, G. Silvestrov, J. MacLachlan, and G. Nicholls, Nucl. Inst. and Meth. 190, (1981) 9
+id-0048402779-ref-0022 Swaters, R.A. et al 2003, ApJ 583, 732.
+id-0000001860-ref-0020 D. Neuffer, in Advanced Accelerator Concepts, AIP Conf. Proc. 156, 201 (1987)
+id-0000001844-ref-0015 24. Wang X.J. et al., "Measurements on Photoelectrons from a Magnesium Cathode in a Microwave Electron Gun", submitted to J. Appl. Phys., 1994.
+id-0064969093-ref-0003 Courvoisier, T. J.-L., Walter, R., Rodriguez, J., Bouchet, L. and Lutovinov, A. A. 2003, IAU Circ., 8063, 3
+id-0000268028-ref-0013 [11] J. B. McGuire, J. Math. Phys. 5, 622 (1964).
+id-0000001844-ref-0016 25. Lehrman I. et al., Nucl. Instr. & Meth. A318 (1992).
+id-0000268028-ref-0014 [12] R. Jackiw and G. Woo, Phys. Rev. D 12, 1643 (1975).
+id-0000001844-ref-0017 26. Baconnier Y. et al., "The CERN Linear Collider Test Facility", in Proceedings of the Linear Accelerator Conference, Ottawa, August 24-28, 1992, pp. 329-331.
+id-0064893838-ref-0007 [4] F.I. Mikhail, M.I. Wanas, A. Hindawi and E.I. Lashin, Int. J. Theor. Phys. 32, 1627 (1993)
+id-0065106724-ref-0010 [11] E. Racine and C. Cutler, Phys. Rev. D 76, 124033 (2007).
+id-0065040394-ref-0008 9. Molteni, D., Sponholz, H., Chakrabarti, S.K. 1996, ApJ, 457, 805
+id-0000001844-ref-0011 20. Schultz D. et al., Nucl. Instr. & Meth., A340 (1994), pp. 127-132.
+id-0000001832-ref-0009 E. Forest, J. Bengtsson, and M. F. Reusch, Phys. Lett. A 158, 99 (1991)
+id-0000268028-ref-0008 [7] P. A. Clarkson and C. M. Cosgrove, J. Phys. A 20, 2003 (1987).
+id-0064969093-ref-0012 Negueruela, I., Smith, D. M. and Chaty, S. 2005, The Astronomer's Telegram, 429, 1
+id-0000268028-ref-0009 [8] C. Nohl, Ann. Phys. (N.Y.) 96, 234 (1976).
+id-0064969093-ref-0011 Negueruela, I., Smith, D., Reig, P., Chaty, S. and Torrejon, J. 2006, in Proceedings of "The X-ray Universe 2005", held in San Lorenzo de El Escorial (Madrid, Spain), 26-30 September 2005, ESA-SP 604, in press, astro-ph/0511088
+id-0000001844-ref-0012 21. Feldman D. et al., "Operation of the APEX Photoinjector Accelerator at 40 MeV", in Proceedings of the Linear Accelerator Conference, Ottawa, August 24-28, 1992.
+id-0065040394-ref-0009 10. Paczynski B., Wiita P. J., 1980, A and A, 88, 23.
+id-0064969093-ref-0010 Matt, G. and Guainazzi, M. 2003, Mon. Not. R. astr. Soc., 341, L13
+id-0065000306-ref-0007 [5] F. Karsch and M. Lutgemeier, Nucl. Phys. B 550, 449 (1999).
+id-0064969093-ref-0009 in't Zand, J. J. M., Jonker, P. G., Nelemans, G., Steeghs, D. and O'Brien, K. 2006, Astron. Astrophys., 448, 1101
+id-0064969093-ref-0007 Indebetouw, R., Mathis, J. S., Babler, B. L., et al. 2005, Astrophys. J., 619, 931
+id-0064969093-ref-0008 in't Zand, J. J. M. 2005, Astron. Astrophys., 441, L1
+id-0000001844-ref-0013 22. Sheffield R. et al., Nucl. Instr. & Meth. A341 (1994) pp. 371-374.
+id-0000268028-ref-0010 [9] P. P. Kulish, S. V. Manakov and L. D. Faddeev, Theor. Math. Phys. 28, 615 (1976)
+id-0000001832-ref-0005 [6] A. J. Dragt, in Lectures on Nonlinear Orbit Dynamics, American Institute of Physics Conference Proceedings No. 87, edited by R. A. Carrigan, F. R. Huson, and M. Month (AIP, New York, 1982).
+id-0000001832-ref-0006 [7] E. Forest, J. Math. Phys. 31, 1133 (1990).
+id-0000618700-ref-0003 [2] C. Lee and X. Gonze, Phys. Rev. B 51, 8610 (1995).
+id-0000535584-ref-0008 and in Hilbert's reply he says he had asked Emmy Noether to look into the energy conservation problem.
+id-0064969093-ref-0006 González-Riestra, R., Oosterbroek, T., Kuulkers, E., Orr, A. and Parmar, A. N. 2004, Astron. Astrophys., 420, 589
+id-0064969093-ref-0004 illiatre:2004filliatre, P. and Chaty, S. 2004, Astrophys. J., 616, 469
+id-0000001844-ref-0014 23. McDonald K.T., "Design of the Laser-Driven RF Electron Gun for the BNL Accelerator Test Facility", DOE/ER/3072-43, Princeton University, 1988.
+id-0000268028-ref-0012 [10] E. H. Lieb and W. Liniger, Phys. Rev. 130, 1605 (1963).
+id-0064969093-ref-0005 Gallo, E., Fender, R. P. and Pooley, G. G. 2003, Mon. Not. R. astr. Soc., 344, 60
+id-0000268028-ref-0011 L. Dolan, Phys. Rev. D 13, 528 (1976).
+id-0000001952-ref-0002 [3] O.A. Valdner, N.P. Sobenin, I.S. Zverev et al. Disk Loaded Waveguides. Reference Book. Moscow, Energoatomizdat, 1991.
+id-0000623396-ref-0027 [28] W. G. Hoover and H. A. Posch, Phys. Rev. E 49, 1913 (1994).
+id-0000001958-ref-0027 18. F. Chen, Introduction to Plasma Physics, Plenum, New York, pp. 23-26 (9174)
+id-0000618700-ref-0004 [3] L. L. Boyer, Phys. Rev. Lett. 42, 584 (1979).
+id-0000001848-ref-0001 also in Report IHEP 92-84, Protvino (1992). 3] S.S. Kurennoy, Report SSCL-636, Dallas (1993). 4] R.L. Gluckstern, Phys. Rev. A46 (1992) 1106
+id-0000001832-ref-0000 [1] J.-P. Eckmann and D. Ruelle, Rev. Mod. Phys. 57, 617 (1985) and references therein.
+id-0000001832-ref-0001 [2] J. Guckenheimer and P. Holmes, Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields (Springer-Verlag, New York, 1986).
+id-0000001832-ref-0002 [3] A. Wolf, J. B. Swift, H. L. Swinney, and J. A. Vastano, Physica 16D, 285 (1985).
+id-0000001832-ref-0003 [4] K. Geist, U. Parlitz, and W. Lauterborn, Prog. Theo. Phys. 83, 875 (1990).
+id-0000001832-ref-0004 [5] V. I. Arnold, Mathematical Methods of Classical Mechanics (Springer, New York, 1978).
+id-0065000306-ref-0006 [4] A. Mocsy, F. Sannino and K. Tuominen, Phys. Rev. Lett. 92, 182302 (2004).
+id-0000464136-ref-0075 [55] L.H. Orr, Physics and Experiments with Linear e+ e Colliders, eds. A.Miyamoto et al.(World Scientific, 1996), p.129.
+id-0000001860-ref-0035 [21] G. W. Foster, and N. V. Mokhov, Backgrounds and Detector Perfor mance at 2 + 2 TeV µ+ µ− Collider, Fermilab-Conf-95/037 (1995)
+id-0000464136-ref-0074 [54] A. Miyamoto, Physics and Experiments with Linear e+ e Colliders, edited by F.A. Harris et al.(World Scientific, 1993), p.141.
+id-0000001898-ref-0009 [10] R. W. Garnett and P. Smith, "Design of a CurrentIndependent Matching Section for APDF", p 107, Proceeding of the 1994 Linear Accelerator Conference, August 1994, Tsukuba, Japan.
+id-0000001907-ref-0002 (3) The 2 \\Theta 2 matrix, also called S, is given by S = ` 0 1\\Gamma 1 0 '
+id-0000464136-ref-0073 [53] R.J. Cashmore et al., MPI/PTh/96-105 and Proceedings of the Workshop on future Physics at HERA 1996.
+id-0000001907-ref-0001 (2) ,T is the transpose of T. I is the 6 \\Theta 6 identity matrix, and S can be written in terms of 2 \\Theta 2 matrices as S = 24 S 0 0 0 S 0 0 0 S 35
+id-0064893838-ref-0006 A. Qadir and M. Sharif, Phys. Lett. A167, 331 (1992)
+id-0064848584-ref-0005 [6] S. Boersma and T. Dray, Gen. Rel. Grav. 27, 319 (1995), gr-qc/9407020.
+id-0053230245-ref-0008 [9] S. Lepri, Phys. Rev. E 58, 7165 (1998).
+id-0053230245-ref-0009 [10] A. Perverzev, Phys. Rev. E 68, 056124 (2003).
+id-0000611452-ref-0082 [83] R. Thomason and T. Trobaugh, Higher algebraic K-theory of schemes and of derived cate gories, The Grothendieck Festschrift, vol. 3, Birkhüser, Boston, 1990, pp. 247-435. a 46 J. T. STAFFORD AND M. VAN DEN BERGH
+id-0053230245-ref-0010 [11] H. Kaburaki and M. Machida, Phys. Lett. A181, 85 (1993).
+id-0000611287-ref-0005 [6] M.E. Sweedler:Hopf Algebras. Benjamin, New York, 1969.
+id-0053230245-ref-0011 [12] S. Lepri, R. Livi, and A. Politi, Phys. Rev. Lett. 78, 1896 (1997).
+id-0000611287-ref-0004 [5] B. Pareigis:On Lie Algebras in the Category of Yetter-Drinfeld modules, q-alg/9612023.
+id-0064798236-ref-0031 [32] N. Seiberg and E. Witten, String theory and noncommutative geometry, JHEP 09, 032 (1999), hep-th/9908142.
+id-0053230245-ref-0012 [13] S. Lepri, Eur. Phys. J. B 18, 441 (2000).
+id-0000611287-ref-0003 [4] Z. Oziewicz, E. Paal and J. Ró_zanski:Acta Physica Polonica B 26 (1995) 1253.
+id-0064822712-ref-0014 [] H. Casalta et al., Solid State Comm. 100, 683 (1996).
+id-0000611452-ref-0075 [76] J. T. Stafford and J. J. Zhang, Examples in noncommutative projective geometry, Math. Proc. Cambridge Philos. Soc. 116 (1994), 415-433.
+id-0064895655-ref-0000 [1] I. G. Bearder et al. (BRAHAMS Collaboration), Phys. Rev. Lett. 88, 202301 (2002).
+id-0000105823-ref-0003 Birdsall, C. K. and Langdon, A. B., 1991. Plasma Physics by Computer Simulation, (Bristol:Adam Hilger)
+id-0064817362-ref-0015 in the system, which scatters itinerant electrons at low
+id-0064817362-ref-0013 resistivity demonstrates that different ionic radii of the
+id-0064817362-ref-0014 A-site cations indeed introduce the quenched disorder
+id-0000611290-ref-0029 [30] A. Okounkov. Random matrices and random permutations. e-print math.CO/9903176.
+id-0000105823-ref-0004 Clutton-Brock, M., 1972. Ap&SS, 16, 101
+id-0000001958-ref-0039 Colin D. Johnson, Hyperfine Interactions, 44 (1988) 21
+id-0000618700-ref-0007 [6] A. Fleszar and X. Gonze, Phys. Rev. Lett. 64, 2961 (1990).
+id-0000618700-ref-0006 [5] S. Biernacki and M.Scheﬄer, Phys. Rev. Lett. 63, 290 (1989).
+id-0065106724-ref-0013 [14] B. Allen (1996), URL gr-qc/9604033.
+id-0000535584-ref-0010 [8] A. Pais,Subtle is the Lord, Oxford University Press (1982).
+id-0000001835-ref-0009 [10] Meng Ta-chung, P. Ji-cai, Xie Qu-bing and Zhu Wei, Origin of proton spin: rotating constituents? Phys. Rev. D 40 769 (1989).
+id-0065106724-ref-0012 [13] Phinney et al., NASA Mission Concept Study (2003).
+id-0000269174-ref-0074 [62] T. Moriya and K. Usami, Solid State Comm. 23, 935 (1977).
+id-0000269174-ref-0075 [63] The energetically favored orientation mst ⊥ H shows no metamagnetic phase transition, as analyzed by A. Giesekus and U. Brandt, Phys. Rev. B 48, 10311 (1993).
+id-0015001430-ref-0059 [] R. J. Furnstahl, C. E. Price and G. E. Walker, Phys. Rev. C 36, 2590 (1987).
+id-0064893838-ref-0005 R.C. Tolman, Relativity, Thermodinamics and Cosmology (Oxford Univ. Pres. London, P.227) (1934)
+id-0000001893-ref-0008 [8] S.S. Kurennoy and G.V. Stupakov, Part. Acc. 45 (1994) 95.
+id-0015001430-ref-0058 J. Boguta and H. Stöcker, Phys. Lett. B 120, 289 (1983).
+id-0037703406-ref-0032 Holtzman, J.A., Burrows, C.J., Casertano, S., Hester. J.J., Trauger, J.T., Watson, A.M. and Worthey, G. 1995, PASP, 107, 1065
+id-0000001882-ref-0006 7. H. Boggild and T. Ferbel, Annual Rev. of Nuclear Science, 24 (1990) 74
+id-0000001882-ref-0007 8. D. Kahana, private communication.
+id-0000001882-ref-0004 5. R. Chehab, J. Math. Phys. 5 (1978) 19.
+id-0000001882-ref-0005 6. C.L. Wang, Phys. Rev. D10 (1974) 3876.
+id-0000001882-ref-0003 4. Physics Today, Dec (1994), p21-22
+id-0000001882-ref-0002 3. R. B. Palmer, Magnetic ﬁngers, Proc. of the Informal Conference on Experimental Neutrino Physics, Cern 65-32 (1965), C. Franzinetti editor.
+id-0000001882-ref-0000 1. D. V. Neuﬀer, R. B. Palmer, Proc. European Particle Acc. Conf., London (1994)
+id-0000001882-ref-0001 2. R. J. Noble, Advanced Accelerator Concepts, AIP Conf. Proc. 279 (1993)
+id-0000554315-ref-0012 Phys. Rev. D 54 (1996) 1525
+id-0000494590-ref-0017 [13] V.S. Fadin, L.N. Lipatov, Phys. Lett. B 429 (1998) 127 [hep-ph/9802290] and references therein
+id-0000494590-ref-0019 [15] H. Lotter, PhD Thesis, Hamburg University 1996, DESY 96-262 [hep-ph/9705288]
+id-0000001889-ref-0008 more details in IHEP 92-84, Protvino (1992).
+id-0000001889-ref-0009 [9] S.S. Kurennoy and G.V. Stupakov, These Proceedings.
+id-0000494590-ref-0018 [14] M. Ciafaloni, G. Camici, Phys. Lett. B 430 (1998) 349 [hep-ph/9803389] and references therein
+id-0000001889-ref-0007 [8] S.S. Kurennoy, Proceed. of EPAC (Berlin, 1992) 871
+id-0000001889-ref-0006 [7] R.E. Collin, Field Theory of Guided Waves (IEEE, NY, 1991).
+id-0064893838-ref-0004 C. Møller, Ann. Phys. (NY) 4, 347 (1958)
+id-0065000306-ref-0004 [2] J. Cleymans, H. Oeschler, K. Redlich and S. Wheaton, Phys. Rev. C 73, 034905 (2006).
+id-0000712365-ref-0002 Early Concepts for µ+ µ− Colliders and High Energy µ Storage Rings, Physics Potential and Development of µ+ µ− Colliders. 2nd Workshop, Sausalito, CA, Ed. D. Cline, AIP Press, Woodbury, New York, (1995).
+id-0000001944-ref-0008 9. G. Ripken, Untersuchugen zur Strahlf¨hrung und Stabsilitat der Teilchen bewe u gung in Beschleunigern und Storage–Ringes unter stronger Ber´chsichtiegung u einer Kopplung der Betatron schwingungen, DESY R1-7014 (1970).
+id-0000001944-ref-0007 8. A.A. Kolomensky and A.N. Lebedev, Theory of cyclic accelerators, North Hol land Publishing Co. (1966).
+id-0000001944-ref-0006 7. E.D. Courant and H.S. Snyder, Theory of the alternating gradient synchrotron, Ann. Phys. 3, 1 (1958).
+id-0000172714-ref-0017 [18] G. Roepstorff, Quantum dynamical entropy based on histories, Preprint, RWTH Aachen, Aachen 1995.
+id-0000001900-ref-0000 [1] F. Diedrich, E. Peik, M. Chen, W. Quint, and H. Walther, Phys. Rev. Lett. 59 (1987) 2931
+id-0000172714-ref-0018 [19] E.B. Davies, Quantum Theory of Open Systems (Academic Press, London, 1976).
+id-0000001900-ref-0004 [4] J.P. Schiffer, Z. Phys. A 321 (1985) 181.
+id-0000172714-ref-0020 [21] P. Bush, P.J. Lahti, and P. Mittelstaedt, The Quantum Theory of Measurement (Springer-Verlag, Berlin, 1991).
+id-0000001900-ref-0002 [2] I. Waki, S. Kassner, G. Birkl, and H. Walther, Phys. Rev. Lett. 68 (1992) 2007.
+id-0000172714-ref-0019 [20] E. Prugoveˇki, Stochastic Quantum Mechanics and Quantum Spacetime (Reidel, Dordrecht, 1986). c
+id-0000001900-ref-0001 D.J. Wineland, J.C. Bergquist, W.M. Itano, J.J. Bollinger, and C.H. Hanney, Phys. Rev. Lett. 59 (1987) 2935.
+id-0000176172-ref-0008 8. M.V. Berry, in Dynamical Chaos (The Royal Society, London, 1987).
+id-0000176172-ref-0007 7. A.J. Lichtenberg and M.A. Lieberman, Regular and Stochastic Motion, (Springer-Verlag, New York, 1983).
+id-0000176172-ref-0006 6. H. Poincar`, Les Methodes Nouvelles de la Mechanique Celeste (Gauthier e Villars, Paris, 1892).
+id-0000176172-ref-0005 5. Quantum Chaos, Ed. by G. Casati and B. Chirikov (Cambridge Univ. Press, Cambridge, 1995).
+id-0000176172-ref-0004 4. Quantum Chaos, Proc. of the Int. School "E. Fermi", Course CXIX, Ed. by G. Casati, I. Guarneri and U. Smilansky (North Holland, Amsterdam, 1993).
+id-0000176172-ref-0003 From Classical to Quantum Chaos, Conference Proceeding SIF 41, Ed. by G.F. Dell’Antonio, S. Fantoni and V.R. Manfredi (Editrice Compositori, Bologna, 1993).
+id-0000001898-ref-0005 [6] E. Boltezar, et al, " Experimental RFQ As Injector To The CERN Linac 1", p 302, Proceeding of the 1981 Linear Accelerator Conference, AECL-10728, October 1981, Santa Fe, New Maxico, USA.
+id-0000554315-ref-0004 [2] G. L. Cardoso, D. L¨ st and T. Mohaupt, Nucl. Phys. B450 (1995) 115. u
+id-0000554315-ref-0006 H.P. Nilles and S. Stieberger, Nucl. Phys. B499 (1997) 3
+id-0000554315-ref-0007 [4] B. de Wit, V. Kaplunovsky, J. Louis and D. L¨ st, Nucl. Phys. B 451 (1995) 53, u
+id-0000554315-ref-0008 [5] I. Antoniadis, S. Ferrara, E. Gava, K.S. Narain, T.R. Taylor, Nucl. Phys. B 447 (1995) 35.
+id-0000172714-ref-0021 [22] F.E. Schroeck, Jr., Quantum Mechanics on Phase Space (Kluwer, Dordrecht, 1995).
+id-0000001900-ref-0005 [5] G.I. Budker, Atom. Energ. 22 (1967) 346.
+id-0000172714-ref-0022 [23] F.E. Schroeck ¨ G. L¨ders, Uber die Zustands¨nderung durch den Meßprozeß. Ann. Physik 8, 322 (1951). u a
+id-0064846428-ref-0028 [29] J.X. Prochaska, S.O. Naumov, B.W. Carney, A. McWilliam, A.M. Wolte Astron.J. 120, 2513 (2000)
+id-0000685093-ref-0023 tio µ = 1 corresponds to the the well-known case of two
+id-0064846428-ref-0029 [30] P.J. Quinn, L. Hernquist, D.P. Fullagar, Astropys.J. 403, 74 (1993)
+id-0000685093-ref-0024 ions of equal masses in a linear trap, where the ratio of √ the eigenfrequencies are in the relation 1 : 3. For this
+id-0000685093-ref-0022 eigenvectors q± , respectively, as a function of µ. The ra
+id-0053013402-ref-0004 [2] I. Volkov, J.R. Banavar, S.P. Hubbell, and A. Maritan, Nature 424, 1035 (2003)
+id-0000685093-ref-0021 In Fig. 1(a) and (b) we plot the eigenfrequencies and the
+id-0064846428-ref-0027 [28] J. Norris, M. Bessel, A.J. Piscles, Astropys.J. Supl.Ser. 58, 463 (1985)
+id-0000685093-ref-0019 the normalization factor, according to the scalar prod
+id-0000685093-ref-0020 uct qi (1)qj (1) + µqi (2)qj (2) = δij with i, j = ±.
+id-0064846428-ref-0026 [27] B. Nordstrem, M. Mayor, J. Andersen et al., Astron. Astrophys. 418, 989 (2004)
+id-0052853758-ref-0032 "The MAGIC Telescope Project Technology and performance aspects":http://hegra1.mppmu.mpg.de/MAGICWeb
+id-0000001925-ref-0011 [11] S.S. Kurennoy, R.L. Gluckstern and G.V. Stupakov, "Coupling Impedances of Small Discontinuities: A General Approach", Phys. Rev. E, vol. 52, No. 4, p. xxx, Oct. 1995.
+id-0000001925-ref-0009 [9] S. Wolfram, Mathematica - A System for Doing Mathematics by Computer. Reading, MA: Addison-Wesley, 1991.
+id-0000001925-ref-0010 [10] K. Halbach, in Proc. of the Second Intl. Conf. on Magnet Technology, Oxford, UK (1967), p. 47. S. KURENNOY: POLARIZABILITIES OF AN ANNULAR CUT 7
+id-0000001925-ref-0007 [7] S.S. Kurennoy, "Pumping slots: coupling impedance calculations and estimates," Report SSCL-636, Dallas (1993).
+id-0000001925-ref-0008 [8] R.L. Gluckstern, R.Li and R.K. Cooper, "Electric polarizability and magnetic susceptibility of small holes in a thin screen," IEEE Trans. Microwave Theory Tech., vol. 38, p. 186, Feb. 1990.
+id-0000001925-ref-0006 [6] B. Radak and R.L. Gluckstern, "Penetration of electromagnetic fields through an elliptical hole in a wall of finite thickness," IEEE Trans. Microwave Theory Tech., vol. 43, p. 194, Jan. 1995.
+id-0000001925-ref-0005 [5] R.L. Gluckstern and J.A. Diamond, "Penetration of fields through a circular hole in the wall of finite thickness," IEEE Trans. Microwave Theory Tech., vol. 39, p. 274, Feb. 1991.
+id-0000001925-ref-0000 [1] H.A. Bethe, "Theory of diffraction by small holes," Phys. Rev., vol. 66, p. 163, 1944.
+id-0000001925-ref-0001 [2] R.E. Collin, Field Theory of Guided Waves. New York: McGraw-Hill, 1960.
+id-0000001925-ref-0002 [3] C.M. Butler, Y. Rahmat-Samii and R. Mittra, "Electromagnetic penetration through apertures in conducting surfaces," IEEE Trans. Antennas Propag., vol. AP-26, p. 82, Jan. 1978.
+id-0000001925-ref-0003 [4] S.S. Kurennoy, "Coupling impedance of pumping holes," Part. Acc., vol. 39, p. 1, 1992
+id-0000001925-ref-0004 R.L. Gluckstern, "Coupling impedance of a single hole in a thickwall beam pipe," Phys. Rev. A, vol. 46, p. 1106, 1992.
+id-0000439797-ref-0022 [16] H. Kawai, D. C. Lewellen, J. A. Schwartz, and S.-H. H. Tye, Nucl. Phys. B299 (1988) 431.
+id-0000001927-ref-0009 [9] F.J. Narcowich, J. Math. Phys. 10, (1986) 2502.
+id-0000116059-ref-0011 Fabian, A. C., Nulsen, P. E. J., Canizares, C. R. 1991, A&ARv, 2, 191.
+id-0000439797-ref-0023 [17] D. Lewellen, Nucl. Phys. B337 (1990) 61.
