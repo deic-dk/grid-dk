@@ -1,0 +1,22 @@
+::EXECUTE::
+$PYTHON epistasis.py epistasis_job2.pkl
+
+::INPUTFILES::
+EpiMain.R
+EpiCRnew_R_edit.R
+EpiLW.R
+DistrPost07_R_edit.R
+epistasis.py
+SkizoGWA1.sav
+epistasis_job2.pkl
+
+::RUNTIMEENVIRONMENT::
+PYTHON-2.7
+R-2.13.1
+
+::OUTPUTFILES::
+epistasis_files2.tar.gz
+
+::JOBTYPE::
+arc
+
